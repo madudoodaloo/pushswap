@@ -19,6 +19,7 @@
 # define COMPLEX "--complex" // 4
 # define ADAPTIVE "--adaptive" // 5
 
+# define WHITESPACES "\t\n\v\f\r " // 9 to 13 and 32 ascii values
 
 typedef struct s_stack
 {
@@ -42,7 +43,6 @@ typedef struct s_moves
 	int rrb;
 	int rrr;
 }	t_moves;
-
 
 typedef struct s_bench
 {
