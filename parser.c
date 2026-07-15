@@ -12,47 +12,44 @@
 
 #include "push_swap.h"
 
-// flag meanings
-// 'i' = integers only, meaning a string containing a single sign and only digits
-// 'c' = characters only, meaning a string with letters only and '-' char
-// 0: contains only expected type
-// -1: invalid characters
-
-int ft_checkchars(char *str, int type)
+// 	ft_checkint returns:
+//  0, if str is a valid int
+// -1, if str is outside int range
+// -2, if str contains invalid int characters
+static int ft_checkint(char *str)
 {
 	int	i;
+	long int temp;
 
+	temp = ft_atol(str);
+	if (ft_strlen(str) > 11 || temp < INT_MIN || temp > INT_MAX)
+		return (-1);
 	i = 0;
-	if (type == 'i')
-	{
-		if (*str == '-' || *str == '+')
-			i++;
-		while (str[i])
-			if (!ft_isdigit(str[i++]))
-				return (-1);
-	}
-//	else if (type == 'c')
-//	{
-//		if (ft_strncmp(str, "--", 2) == 0)
-//			i += 2;
-//		while (str[i])
-//			if (!ft_islower(str[i++]))
-//				return (-1);
-//	}
+	if (*str == '-' || *str == '+')
+		i++;
+	while (str[i])
+		if (!ft_isdigit(str[i++]))
+			return (-2);
 	return (0);
-}
+}	
 
-int	ft_checksyntax(char **cmdl)
+// 	ft_checksyntax returns:
+//  0, if the provided input is valid
+// -1, if args are outside int range
+// -2, if no args list was provided
+// -3, if invalid option usage is detected
+static int	ft_checksyntax(char **cmdl)
 {
 	int i = 0;
 	int j = 0;
 
 	while (cmdl[i])
 	{
-		if (ft_checkchars(cmdl[i], 'i') < 0)
-			break ;
-		else if (!ft_checkrange(cmdl[i]))
+		j = ft_checkint(cmdl[i]);
+		else if (j == -1)
 			return (-1);
+		if (j == -2)
+			break ;
 		i++;
 	}
 	if (i == 0)
@@ -64,7 +61,10 @@ int	ft_checksyntax(char **cmdl)
 	return (0);
 }
 
-bool ft_checkdups(char **cmdl)
+// ft_checkdups returns:
+// 0, if no dups were found
+// 1, if has dups
+static bool ft_checkdups(char **cmdl)
 {
 	bool dup;
 
@@ -80,31 +80,30 @@ bool ft_checkdups(char **cmdl)
 	return (dup);
 }
 
-// error list parser
-// 0: success
+//  parser returns:
+//  0: success
 // -1: provided input is not within int range
 // -2: missing ints list to sort
 // -3: invalid int format or flag input
 // -4: has dups
 int	parser(char **cmdl, t_stack *a, t_bench *bench)
 {
-	int error;
+	int ret;
 
-	error = ft_checksyntax(cmdl);
-	if (error < 0 || ft_checkdups(cmdl))
+	ret = ft_checksyntax(cmdl);
+	if (ret < 0 || ft_checkdups(cmdl))
 	{
 		free_matrix(cmdl);
-		if (!error)
+		if (!ret)
 			return (-4)
-		return (error);
+		return (ret);
 	}
 	tokenizer(cmdl, a, bench);
 	free_matrix(cmdl);
 	return (0);
 }
 
-// sö pode receber uma flag de selector no mäximo, e bench opcional.
-// 1o, lista formatada de ints da stack a, depois flags.
+// simply converts the full input into a processable array of strs, to be later on parsed, allocating memory for it
 char	**lexer(int ac, char **av)
 {
 	int i = 0; //skip av[0]

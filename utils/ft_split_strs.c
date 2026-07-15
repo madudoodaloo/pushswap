@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-int	ft_skip(int c, char *skip)
+static int	ft_skip(int c, char *skip)
 {
 	int i;
 

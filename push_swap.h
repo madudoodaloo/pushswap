@@ -48,10 +48,29 @@ typedef struct s_bench
 {
 	bool benchmark; //should only write to stderr when the flag is present.
 	char *strategy; //selected strategy name
-	char *complexity; //complexity class of the selected strategy
 	t_moves *moves; // total number of ops and count of each op type.
 	int performance; // added an extra display on the bench, rating the program on performance
+	int elements; // total number of elements given
+	float disorder;
 }	t_bench;
 
+/* parser.c */
+char	**lexer(int ac, char **av);
+int	parser(char **cmdl, t_stack *a, t_bench *bench);
+
+/* tokenizer.c */
+void	tokenizer(char **cmdl, t_stack *a, t_bench *bench);
+
+/* option_handler.c */
+int	ft_getoptions(char *option, char info);
+
+/* utils/ft_split_strs.c */
+char	**ft_split_strs(char const *str, char *skip);
+
+/* utils/ft_atol.c */
+long int	ft_atol(char *str);
+
+/* utils/parsing.c */
+void free_matrix(char **matrix);
 
 #endif

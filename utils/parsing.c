@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   disorder.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: masilva- <masilva-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/12 03:54:53 by masilva-          #+#    #+#             */
-/*   Updated: 2026/07/12 03:54:53 by masilva-         ###   ########.fr       */
+/*   Created: 2026/07/15 03:56:29 by masilva-          #+#    #+#             */
+/*   Updated: 2026/07/15 03:56:29 by masilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-/* int compute_disorder(t_stack astack)
+void free_matrix(char **matrix)
 {
-	int mistakes;
-	int total_pairs;
-
-	if (mistakes || total_pairs)
-	mistakes = 0;
-	total_pairs = 0;
-	while ()
-		return (mistakes/total pairs)
-
+	if (matrix)
+	{
+		while (*matrix)
+			free(*matrix++);
+		free(matrix);
+	}
 }
- */
+
+ft_printstack()
+
+ft_printbench()

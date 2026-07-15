@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: masilva- <masilva-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/15 03:56:29 by masilva-          #+#    #+#             */
-/*   Updated: 2026/07/15 03:56:29 by masilva-         ###   ########.fr       */
+/*   Created: 2026/07/15 04:10:36 by masilva-          #+#    #+#             */
+/*   Updated: 2026/07/15 04:10:36 by masilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void free_matrix(char **matrix)
+long int	ft_atol(char *str)
 {
-	while (matrix)
+	size_t	i;
+	size_t	nbr;
+	int		sign;
+
+	i = 0;
+	nbr = 0;
+	sign = 1;
+	if (str[i] == 43 || str[i] == 45)
 	{
-		if (*matrix)
-			free(*matrix);
-		*matrix++;
+		if (str[i] == 45)
+			sign *= -1;
+		i++;
 	}
-	free(matrix);
+	while (str[i] < 58 && str[i] > 47)
+	{
+		nbr = (nbr * 10) + (str[i] - 48);
+		i++;
+	}
+	return (nbr * sign);
 }
