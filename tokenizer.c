@@ -36,7 +36,6 @@ void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 	bench->elements = max; //we will be sorting based in disorder rate, not elements (?)
 	bench->benchmark = options / 10;
 	bench->strategy = options % 10;
-
 	i = 0;
 	while (cmdl[i] && i < max)
 		ft_node_addback(a, ft_nodenew(ft_atoi(cmdl[i++])));

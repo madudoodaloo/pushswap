@@ -14,12 +14,14 @@
 
 void free_matrix(char **matrix)
 {
-	if (matrix)
-	{
-		while (*matrix)
-			free(*matrix++);
-		free(matrix);
-	}
+	int i;
+
+	if (!matrix)
+		return ;
+	i = -1;
+	while (matrix[++i])
+		free(matrix[i]);
+	free(matrix);
 }
 // Helper function to cleanly free and nullify an individual stack
 static void	free_stack(t_stack **stack)

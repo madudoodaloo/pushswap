@@ -23,7 +23,7 @@ static char	*get_strategy_name(int strategy_id)
 		return ("Complex / O(n log n)");
 	if (strategy_id == 4)
 		return ("Adaptive / O(n\\sqrt{n})");
-	return ("Error");
+	return ("NONE");
 }
 
 
@@ -67,6 +67,8 @@ void	ft_printbench(t_bench *bench)
 	//ft_printf("[bench] disorder:  %d.%02d%%\n", disorder_whole, disorder_fraction);
 	ft_printf("[bench] elements:  %d\n", bench->elements);
 	ft_printf("[bench] strategy:  %s\n", get_strategy_name(bench->strategy));
+	ft_printf("[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
+
 	//ft_printf("[bench] total_ops: %d\n", bench.moves.total);
 	
 	//ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",

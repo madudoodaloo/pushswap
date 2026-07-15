@@ -53,7 +53,7 @@ int main(int ac, char **av)
 			ft_printbench(&bench);
 		}
 		//sort(&a, &b, &bench);
+		free_exit(&a, &b);
 	}
-	free_exit(&a, &b);
 	return (0);
 }
