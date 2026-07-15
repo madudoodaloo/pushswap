@@ -15,21 +15,21 @@
 int	ft_getoptions(char *option, char info)
 {
 	static int bench;
-	static int strategy;
+	static int strat;
 
 	if (info == 'i')
-		;
-	if (!bench && !ft_strcmp(option, BENCH))
+		return (bench * 10 + strat);
+	if (!bench && !ft_strncmp(option, BENCH, 8))
 		bench++;
-	else if (!strat && !ft_strcmp(option, SIMPLE))
-		strategy += 1;
-	else if (!strat && !ft_strcmp(option, MEDIUM))
-		strategy += 2;
-	else if (!strat && !ft_strcmp(option, COMPLEX))
-		strategy += 3;
-	else if (!strat && !ft_strcmp(option, ADAPTIVE))
-		strategy += 4;
+	else if (!strat && !ft_strncmp(option, SIMPLE, 9))
+		strat += 1;
+	else if (!strat && !ft_strncmp(option, MEDIUM, 9))
+		strat += 2;
+	else if (!strat && !ft_strncmp(option, COMPLEX, 10))
+		strat += 3;
+	else if (!strat && !ft_strncmp(option, ADAPTIVE, 11))
+		strat += 4;
 	else
-		return (-1)
-	return (bench * 10 + strategy);
+		return (-1);
+	return (0);
 }

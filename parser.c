@@ -71,17 +71,23 @@ static int	ft_checksyntax(char **cmdl)
 static bool ft_checkdups(char **cmdl)
 {
 	bool dup;
+	long int curr;
+	long int temp;
 	int	i;
 	int j;
 
 	i = 0;
 	dup = 0;
-	while (cmdl && cmdl[i] && !dup && ft_checkint(cmdl[i]) == 0)
+	while (cmdl && !dup && cmdl[i] && ft_checkint(cmdl[i]) == 0)
 	{
+		curr = ft_atol(cmdl[i]);
 		j = i;
-		while (cmdl[++j] && !dup)
-			if (ft_checkint(cmdl[j]) == 0 && ft_strcmp(cmdl[i], cmdl[j]) == 0)
+		while (cmdl[++j] && !dup && ft_checkint(cmdl[j]) == 0)
+		{
+			temp = ft_atol(cmdl[j]);
+			if (curr == temp)
 				dup = 1;
+		}
 		i++;
 	}
 	return (dup);

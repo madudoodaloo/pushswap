@@ -12,17 +12,28 @@
 
 #include "push_swap.h"
 
-void	init_data(t_stack *a, t_stack *b, t_bench bench)
+void	init_data(t_stack **a, t_stack **b, t_bench *bench)
 {
 	*a = NULL;
 	*b = NULL;
-	bench = NULL;
 	
-	bench->benchmark = 0;
+	bench->benchmark = false;
     bench->strategy = 0;
     bench->performance = 0;
     bench->elements = 0;
     bench->disorder = 0.0;
+	bench->moves.total = 0;
+    bench->moves.sa = 0;
+    bench->moves.sb = 0;
+    bench->moves.ss = 0;
+    bench->moves.pa = 0;
+    bench->moves.pb = 0;
+    bench->moves.ra = 0;
+    bench->moves.rb = 0;
+    bench->moves.rr = 0;
+    bench->moves.rra = 0;
+    bench->moves.rrb = 0;
+    bench->moves.rrr = 0;
 }
 
 int main(int ac, char **av)
@@ -43,6 +54,6 @@ int main(int ac, char **av)
 		}
 		//sort(&a, &b, &bench);
 	}
-	free_exit(&a, &b, &bench);
+	free_exit(&a, &b);
 	return (0);
 }

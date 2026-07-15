@@ -7,7 +7,7 @@ LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
 # pushswap srcf handler
-SRCF = $(wildcard *.c)
+SRCF = $(wildcard *.c) $(wildcard utils/*.c)
 OBJF = ${SRCF:.c=.o}
 
 all: $(LIBFT) $(NAME)

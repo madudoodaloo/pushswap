@@ -30,7 +30,7 @@ void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 	int max;
 	int i;
 
-	options = ft_getoptions(cmdl, 'i');
+	options = ft_getoptions(*cmdl, 'i');
 	max = ft_matrixlen(cmdl);
 	max -= options / 10 + (options % 10 > 0);
 	bench->elements = max; //we will be sorting based in disorder rate, not elements (?)
@@ -39,7 +39,7 @@ void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 
 	i = 0;
 	while (cmdl[i] && i < max)
-		ft_lstaddback(&a, ft_lstnew(ft_atoi(cmdl[i++])));
+		ft_node_addback(a, ft_nodenew(ft_atoi(cmdl[i++])));
 	//bench->disorder = compute_disorder(*a);
 	// missing moves init if benchmark bool == 1
 	// missing performance only after execution

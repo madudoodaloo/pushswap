@@ -20,6 +20,9 @@
 # define ADAPTIVE "--adaptive" // 4
 
 # define WHITESPACES "\t\n\v\f\r " // 9 to 13 and 32 ascii values
+# include "libft/libft.h"
+# include <stddef.h>
+# include <stdbool.h>
 
 typedef struct s_stack
 {
@@ -55,10 +58,10 @@ typedef struct s_bench
 
 /* parser.c */
 char	**lexer(int ac, char **av);
-int	parser(char **cmdl, t_stack *a, t_bench *bench);
+int	parser(char **cmdl, t_stack **a, t_bench *bench);
 
 /* tokenizer.c */
-void	tokenizer(char **cmdl, t_stack *a, t_bench *bench);
+void	tokenizer(char **cmdl, t_stack **a, t_bench *bench);
 
 /* option_handler.c */
 int	ft_getoptions(char *option, char info);
@@ -70,10 +73,15 @@ char	**ft_split_strs(char const *str, char *skip);
 long int	ft_atol(char *str);
 
 /* utils/parsing.c */
-void free_matrix(char **matrix);
+void	free_matrix(char **matrix);
+void	free_exit(t_stack **a, t_stack **b);
 
 /* utils/print */
-void	ft_printbench(t_bench bench);
+void	ft_printbench(t_bench *bench);
 void	ft_printstack(t_stack *stack);
+
+/* utils/node_utils.c */
+t_stack *ft_nodenew(int value);
+void    ft_node_addback(t_stack **stack, t_stack *new_node);
 
 #endif
