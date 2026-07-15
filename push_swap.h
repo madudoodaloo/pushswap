@@ -13,11 +13,11 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# define BENCH	"--bench" // 1
-# define SIMPLE "--simple" // 2
-# define MEDIUM "--medium" // 3
-# define COMPLEX "--complex" // 4
-# define ADAPTIVE "--adaptive" // 5
+# define BENCH "--bench" // 10
+# define SIMPLE "--simple" // 1
+# define MEDIUM "--medium" // 2
+# define COMPLEX "--complex" // 3
+# define ADAPTIVE "--adaptive" // 4
 
 # define WHITESPACES "\t\n\v\f\r " // 9 to 13 and 32 ascii values
 

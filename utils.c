@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: masilva- <masilva-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/14 03:22:37 by masilva-          #+#    #+#             */
-/*   Updated: 2026/07/14 03:22:37 by masilva-         ###   ########.fr       */
+/*   Created: 2026/07/15 03:56:29 by masilva-          #+#    #+#             */
+/*   Updated: 2026/07/15 03:56:29 by masilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-
-
-void	init_data(t_stack *a, t_stack *b, t_bench bench)
+void free_matrix(char **matrix)
 {
-	*a = NULL;
-	*b = NULL;
-	bench = NULL;
-}
-
-int main(int ac, char **av)
-{
-	t_stack a;
-	t_stack b;
-	t_bench bench;
-
-	if (ac > 1)
+	while (matrix)
 	{
-		init_data(&a, &b, &bench);
-		if (parser(lexer(ac, av), &a, &bench) < 0)
-			write(2, "Error\n", 6);
-		sort(&a, &b, &bench);
+		if (*matrix)
+			free(*matrix);
+		*matrix++;
 	}
-	free_exit(a, b, bench);
-	return (0);
-
+	free(matrix);
 }
