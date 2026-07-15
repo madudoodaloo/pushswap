@@ -1,20 +1,32 @@
 NAME = push_swap
 CCFLAGS = -Wall -Werror -Wextra -g #-fsanitize=address
-INCLUDES = push_swap.h
+INCLUDE = push_swap.h
 
+# libft handler
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
+
+# pushswap srcf handler
 SRCF = $(wildcard *.c)
 OBJF = ${SRCF:.c=.o}
 
-%.o: %.c
+all: $(LIBFT) $(NAME)
+
+$(LIBFT):
+	@make -C $(LIBFT_DIR)
+
+%.o: %.c $(INCLUDE)
 	cc $(CCFLAGS) -c $< -o $@
 
-all: $(NAME)
-
-$(NAME): $(OBJF)
-	cc $(CCFLAGS) $(INCLUDES) $(OBJF) -o $(NAME)
+$(NAME): $(OBJF) $(LIBFT)
+	$(CC) $(CCFLAGS) $(OBJF) $(LIBFT) -o $(NAME)
 
 clean: 
 	rm -rf $(OBJF)
+	@make -C $(LIBFT_DIR) clean
 
 fclean: clean
 	rm -rf $(NAME)
+	@make -C $(LIBFT_DIR) fclean
+
+re: fclean all
