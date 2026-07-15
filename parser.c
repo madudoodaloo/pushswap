@@ -27,6 +27,8 @@ static int ft_checkint(char *str)
 	i = 0;
 	if (*str == '-' || *str == '+')
 		i++;
+	if (!str[i])
+		return (-1);
 	while (str[i])
 		if (!ft_isdigit(str[i++]))
 			return (-2);
@@ -43,22 +45,24 @@ static int	ft_checksyntax(char **cmdl)
 	int i = 0;
 	int j = 0;
 
-	while (cmdl[i])
-	{
-		j = ft_checkint(cmdl[i]);
-		else if (j == -1)
-			return (-1);
-		if (j == -2)
-			break ;
-		i++;
-	}
-	if (i == 0)
-		return (-2);
-	j = -1;
-	while (++j < 3 && cmdl[i + j])
-		if (ft_getoptions(cmdl[i + j], 'p') < 0)
-			return (-3);
-	return (0);
+    if (!cmdl || !cmdl[0])
+        return (-2);
+    while (cmdl[i])
+    {
+		if (j >= 0)
+        	j = ft_checkint(cmdl[i]);
+        if (j == -1)
+            return (-1);
+        if (j == -2)
+        {
+            if (i == 0)
+                return (-2);
+			else if (ft_getoptions(cmdl[i], 'p') < 0)
+                return (-3);
+        }
+        i++;
+    }
+    return (0);
 }
 
 // ft_checkdups returns:
@@ -67,14 +71,17 @@ static int	ft_checksyntax(char **cmdl)
 static bool ft_checkdups(char **cmdl)
 {
 	bool dup;
+	int	i;
+	int j;
 
+	i = 0;
 	dup = 0;
-	while (cmdl && cmdl[++i] && !dup)
+	while (cmdl && cmdl[i] && !dup && ft_checkint(cmdl[i]) == 0)
 	{
 		j = i;
-		while (cmdl[++j])
-			if (ft_strcmp(cmdl[i], cmdl[j]) == 0)
-				dup == 1;
+		while (cmdl[++j] && !dup)
+			if (ft_checkint(cmdl[j]) == 0 && ft_strcmp(cmdl[i], cmdl[j]) == 0)
+				dup = 1;
 		i++;
 	}
 	return (dup);
@@ -86,16 +93,18 @@ static bool ft_checkdups(char **cmdl)
 // -2: missing ints list to sort
 // -3: invalid int format or flag input
 // -4: has dups
-int	parser(char **cmdl, t_stack *a, t_bench *bench)
+int	parser(char **cmdl, t_stack **a, t_bench *bench)
 {
 	int ret;
 
+	if (!cmdl || !cmdl[0])
+		return (-2);
 	ret = ft_checksyntax(cmdl);
 	if (ret < 0 || ft_checkdups(cmdl))
 	{
 		free_matrix(cmdl);
 		if (!ret)
-			return (-4)
+			return (-4);
 		return (ret);
 	}
 	tokenizer(cmdl, a, bench);
@@ -106,20 +115,22 @@ int	parser(char **cmdl, t_stack *a, t_bench *bench)
 // simply converts the full input into a processable array of strs, to be later on parsed, allocating memory for it
 char	**lexer(int ac, char **av)
 {
-	int i = 0; //skip av[0]
+	int i; //skip av[0]
 	char *str;
+	char *temp;
 	char **cmdline;
 
-	cmdline = NULL;
-	str = NULL;
-	while (++i < ac)
-	{
-		str = ft_strjoin(str, av[i]);
-		str = ft_strjoin(str, " ");
-	}
-	ft_printf("str is: %s\n", str);
+	i = 0;
+	str = ft_strdup("");
 	if (!str)
 		return (NULL);
+	while (++i < ac)
+	{
+		temp = ft_strjoin(str, av[i]);
+		free(str);
+		str = ft_strjoin(temp, " ");
+		free(temp);
+	}
 	cmdline = ft_split_strs(str, WHITESPACES); // needs free()
 	free(str);
 	return (cmdline);

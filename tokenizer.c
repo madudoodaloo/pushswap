@@ -24,10 +24,11 @@ static int	ft_matrixlen(char **matrix)
 	return (i);
 }
 
-void	tokenizer(char **cmdl, t_stack *a, t_bench *bench)
+void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 {
 	int options;
 	int max;
+	int i;
 
 	options = ft_getoptions(cmdl, 'i');
 	max = ft_matrixlen(cmdl);
@@ -35,9 +36,11 @@ void	tokenizer(char **cmdl, t_stack *a, t_bench *bench)
 	bench->elements = max; //we will be sorting based in disorder rate, not elements (?)
 	bench->benchmark = options / 10;
 	bench->strategy = options % 10;
+
+	i = 0;
 	while (cmdl[i] && i < max)
-		ft_lstaddback(&a, ft_lstnew(ft_atoi(cmdl[i++])))
-	bench->disorder = compute_disorder(a);
+		ft_lstaddback(&a, ft_lstnew(ft_atoi(cmdl[i++])));
+	//bench->disorder = compute_disorder(*a);
 	// missing moves init if benchmark bool == 1
 	// missing performance only after execution
 }

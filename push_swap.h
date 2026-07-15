@@ -24,7 +24,6 @@
 typedef struct s_stack
 {
 	int n;
-	int index;
 	struct s_stack *next;
 }	t_stack;
 
@@ -47,11 +46,11 @@ typedef struct s_moves
 typedef struct s_bench
 {
 	bool benchmark; //should only write to stderr when the flag is present.
-	char *strategy; //selected strategy name
-	t_moves *moves; // total number of ops and count of each op type.
+	int strategy; //selected strategy id
 	int performance; // added an extra display on the bench, rating the program on performance
 	int elements; // total number of elements given
 	float disorder;
+	t_moves moves; // total number of ops and count of each op type.
 }	t_bench;
 
 /* parser.c */
@@ -72,5 +71,9 @@ long int	ft_atol(char *str);
 
 /* utils/parsing.c */
 void free_matrix(char **matrix);
+
+/* utils/print */
+void	ft_printbench(t_bench bench);
+void	ft_printstack(t_stack *stack);
 
 #endif

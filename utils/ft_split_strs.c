@@ -52,19 +52,18 @@ char	**ft_split_strs(char const *str, char *skip)
 	if (!split)
 		return (NULL);
 	i = 0;
-	start = -1;
-	while (str[++start])
+	start = 0;
+	while (str[start])
 	{
+		while (str[start] && ft_skip(str[start], skip))
+			start++;
+		if (!str[start])
+			break;
 		size = 0;
-		while (!ft_skip(str[start + size], skip) && str[start + size] != '\0')
+		while (str[start + size] && !ft_skip(str[start + size], skip))
 			size++;
-		if ((ft_skip(str[start + size], skip) && size > 0) || str[start + size] == '\0')
-		{
-			split[i++] = ft_substr(str, start, size);
-			if (str[start + size] == '\0')
-				break ;
-			start += size;
-		}
+		split[i++] = ft_substr(str, start, size);
+		start += size;
 	}
 	split[i] = NULL;
 	return (split);

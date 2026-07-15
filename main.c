@@ -17,12 +17,18 @@ void	init_data(t_stack *a, t_stack *b, t_bench bench)
 	*a = NULL;
 	*b = NULL;
 	bench = NULL;
+	
+	bench->benchmark = 0;
+    bench->strategy = 0;
+    bench->performance = 0;
+    bench->elements = 0;
+    bench->disorder = 0.0;
 }
 
 int main(int ac, char **av)
 {
-	t_stack a;
-	t_stack b;
+	t_stack *a;
+	t_stack *b;
 	t_bench bench;
 
 	if (ac > 1)
@@ -33,11 +39,10 @@ int main(int ac, char **av)
 		else
 		{
 			ft_printstack(a);
-			ft_printbench(bench);
+			ft_printbench(&bench);
 		}
 		//sort(&a, &b, &bench);
 	}
-	free_exit(a, b, bench);
+	free_exit(&a, &b, &bench);
 	return (0);
-
 }
