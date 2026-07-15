@@ -48,8 +48,6 @@ char	**ft_split_strs(char const *str, char *skip)
 	int		start;
 	int		size;
 
-	if (!str)
-		return (NULL);
 	split = (char **)malloc(sizeof(char *) * (ft_counter(str, skip) + 1));
 	if (!split)
 		return (NULL);

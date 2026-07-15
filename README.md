@@ -33,3 +33,4 @@ research
 
 	https://www.merriam-webster.com/dictionary/parser
 	
+https://medium.com/@piyushkashyap045/understanding-tokenizers-in-natural-language-processing-nlp-1c295d3cfec2
