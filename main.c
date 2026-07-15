@@ -14,51 +14,26 @@
 
 int ft_checkchars(char *str, int type)
 {
-	if (!ft_islower(*str) && ft_strncmp(str, "--", 2) != 0)
-		return ()
-	while ()
-	if (type == 'd')
-	{
-		while (*str)
-		{
-			if (*str == '-' || *str == '+')
-				i++;
-			if (!ft_isdigit(*str))
+	int	i;
 
-		}
-		
+	i = 0
+	if (type == 'i')
+	{
+		if (*str == '-' || *str == '+')
+			i++;
+		while (str[i])
+			if (!ft_isdigit(str[i++]))
+				return (-1);
 	}
-	int letters;
-	int dash;
-	int plus;
-	int sign;
-	int digits;
-
-	if (type == 'd')
-		return (sign)
-
-	while (*str)
+	else if (type == 'c')
 	{
-		if (type == 'd'  )
-			digits++;
-		else if (ft_islower(*str))
-			letters++;
-		else if (*str == '-')
-			dash++;
-		else if (*str == '+')
-			plus++;
-		else 
-			return (-1);
-		str++;
+		if (ft_strncmp(str, "--", 2) == 0)
+			i += 2;
+		while (str[i])
+			if (!ft_islower(str[i++]))
+				return (-1);
 	}
-	if (plus > 1 || plus > 0 && dash > 0 || type == 'd' && )
-		return (-1);
-	if ()
-	{
-		if ((type == 'c' && letters > 0 && !digits && )|| \
-				(type == 'd' && digits > 0 && !letters))
-			return (0);
-		else if ()
+	return (0);
 }
 
 int get_flag(ac, av)
@@ -69,44 +44,37 @@ int get_flag(ac, av)
 // flag meanings
 // 'i' = integers only, meaning a string containing a single sign and only digits
 // 'c' = characters only, meaning a string with letters only and '-' char
-// 1: contains only opposite type
 // 0: contains only expected type
-// -1: mixed characters
+// -1: invalid characters
 
 // error list ft_checksyntax
 // 0: success
 // -1: invalid format "98j8" or "--s1mple"
 // -2: provided input is not within int range
-// -3: missing ints list to sort
-// -4: ./push 1 2 3 --bench 4 5 6 not accepted
+// -3: missing ints list to sort or excessive flag input
+
 int	ft_checksyntax(char **cmdl)
 {
-	int i = 0;
-	int j = 0;
-	int flag;
+	int i = 0; // tracks number of ints
+	int j = 0; // tracks number of flags
+
 	while (cmdl[i])
 	{
-		flag = ft_checkchars(cmdl[i], 'i');
-		if (flag == -1)
-			return (-1)
-		if (flag == 1)
+		if (ft_checkchars(cmdl[i], 'i') < 0)
 			break ;
 		else if (!ft_checkrange(cmdl[i]))
 			return (-2);
 		i++;
 	}
-	if (i == 0)
-		return (-3);
-	while (cmdl[i + j])
+	while (i > 0 && j < 2 && cmdl[i + j])
 	{
 		if (ft_checkchars(cmdl[i + j], 'c') != 0)
 			return (-1);
-		else if (j > 1)
-			return (-4);
 		j++;
 	}
+	if (i == 0 || j == 2)
+		return (-3);
 	return (0);
-
 }
 
 
