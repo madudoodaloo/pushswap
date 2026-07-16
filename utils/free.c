@@ -23,7 +23,7 @@ void free_matrix(char **matrix)
 		free(matrix[i]);
 	free(matrix);
 }
-// Helper function to cleanly free and nullify an individual stack
+
 static void	free_stack(t_stack **stack)
 {
 	t_stack	*current;
@@ -41,7 +41,6 @@ static void	free_stack(t_stack **stack)
 	*stack = NULL;
 }
 
-// Cleans up all allocations before program termination
 void	free_exit(t_stack **a, t_stack **b)
 {
 	free_stack(a);

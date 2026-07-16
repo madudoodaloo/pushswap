@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 float compute_disorder(t_stack **a)
 {
@@ -37,6 +37,5 @@ float compute_disorder(t_stack **a)
 	}
 	if (!total_pairs)
 		return (0.0f);
-	printf("mistakes %d total %d!\n", mistakes, total_pairs);
 	return (((float)mistakes / (float)total_pairs) * 100.0f);
 }
