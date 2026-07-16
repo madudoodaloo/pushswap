@@ -104,7 +104,10 @@ int	parser(char **cmdl, t_stack **a, t_bench *bench)
 	int ret;
 
 	if (!cmdl || !cmdl[0])
+	{
+		free_matrix(cmdl);
 		return (-2);
+	}
 	ret = ft_checksyntax(cmdl);
 	if (ret < 0 || ft_checkdups(cmdl))
 	{

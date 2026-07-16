@@ -21,8 +21,10 @@
 
 # define WHITESPACES "\t\n\v\f\r " // 9 to 13 and 32 ascii values
 # include "libft/libft.h"
+# include "ft_fprintf/ft_fprintf.h"
 # include <stddef.h>
 # include <stdbool.h>
+# include <unistd.h>
 
 typedef struct s_stack
 {
@@ -77,11 +79,13 @@ void	free_matrix(char **matrix);
 void	free_exit(t_stack **a, t_stack **b);
 
 /* utils/print */
-void	ft_printbench(t_bench *bench);
+void	ft_printbench(int fd, t_bench *bench);
 void	ft_printstack(t_stack *stack);
 
 /* utils/node_utils.c */
 t_stack *ft_nodenew(int value);
 void    ft_node_addback(t_stack **stack, t_stack *new_node);
 
+/* disorder.c */
+float compute_disorder(t_stack **a);
 #endif

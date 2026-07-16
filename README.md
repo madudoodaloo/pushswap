@@ -1,7 +1,7 @@
 # pushswap
 
 masilva-
-- parser list of ints to stack a
+- parser list of ints to stack a ☑️
 	- atoi? or ints must be adequatelly formated?
 	- no dups
 	- within int range

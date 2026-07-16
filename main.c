@@ -50,9 +50,10 @@ int main(int ac, char **av)
 		else
 		{
 			ft_printstack(a);
-			ft_printbench(&bench);
+			ft_printbench(1, &bench);
 		}
 		//sort(&a, &b, &bench);
+		//ft_printbench(STDERR_FILENO, &bench);
 		free_exit(&a, &b);
 	}
 	return (0);

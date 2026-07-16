@@ -48,7 +48,7 @@ char	**ft_split_strs(char const *str, char *skip)
 	int		start;
 	int		size;
 
-	split = (char **)malloc(sizeof(char *) * (ft_counter(str, skip) + 1));
+	split = (char **)ft_calloc(ft_counter(str, skip) + 1, sizeof(char *));
 	if (!split)
 		return (NULL);
 	i = 0;

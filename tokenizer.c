@@ -39,7 +39,6 @@ void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 	i = 0;
 	while (cmdl[i] && i < max)
 		ft_node_addback(a, ft_nodenew(ft_atoi(cmdl[i++])));
-	//bench->disorder = compute_disorder(*a);
-	// missing moves init if benchmark bool == 1
+	bench->disorder = compute_disorder(a);
 	// missing performance only after execution
 }

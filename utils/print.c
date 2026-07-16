@@ -48,14 +48,11 @@ void	ft_printstack(t_stack *stack)
 	ft_printf("\n");
 }
 
-void	ft_printbench(t_bench *bench)
+void	ft_printbench(int fd, t_bench *bench)
 {
-	//int	disorder_whole;
-	//int	disorder_fraction;
-
-	// Only execute if the --bench flag was actually parsed
-	//if (!bench.benchmark)
-	//	return ;
+	if (!bench->benchmark)
+		fd = 1; // needs update to return ;
+		//return ;
 
 	// Convert float disorder to whole and fractional digits
 	//disorder_whole = (int)bench.disorder;
@@ -64,18 +61,22 @@ void	ft_printbench(t_bench *bench)
 	//	disorder_fraction = -disorder_fraction;
 
 	// Print lines matching the console layout exactly
-	//ft_printf("[bench] disorder:  %d.%02d%%\n", disorder_whole, disorder_fraction);
-	ft_printf("[bench] elements:  %d\n", bench->elements);
-	ft_printf("[bench] strategy:  %s\n", get_strategy_name(bench->strategy));
-	ft_printf("[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
-
-	//ft_printf("[bench] total_ops: %d\n", bench.moves.total);
+	ft_fprintf(fd, "[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
+	ft_fprintf(fd, "[bench] elements:  %d\n", bench->elements);
+	ft_fprintf(fd, "remove above\n");
 	
-	//ft_printf("[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
-	//	bench.moves.sa, bench.moves.sb, bench.moves.ss, 
-	//	bench.moves.pa, bench.moves.pb);
-		
-	//ft_printf("[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d  rrb:  %d  rrr:  %d\n",
-	//	bench.moves.ra, bench.moves.rb, bench.moves.rr, 
-	//	bench.moves.rra, bench.moves.rrb, bench.moves.rrr);
+	ft_fprintf(fd, "[bench] disorder:  %d.", (int)bench->disorder);
+	int decimals = (int)(bench->disorder * 100) % 100;
+	if (decimals < 10)
+		ft_fprintf(fd, "0%d\n", decimals);
+	else
+		ft_fprintf(fd, "%d\n", decimals);
+	ft_fprintf(fd, "[bench] strategy:  %s\n", get_strategy_name(bench->strategy));
+	ft_fprintf(fd, "[bench] total_ops: %d\n", bench->moves.total);
+	ft_fprintf(fd, "[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
+		bench->moves.sa, bench->moves.sb, bench->moves.ss, 
+		bench->moves.pa, bench->moves.pb);
+	ft_fprintf(fd, "[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d  rrb:  %d  rrr:  %d\n",
+		bench->moves.ra, bench->moves.rb, bench->moves.rr, 
+		bench->moves.rra, bench->moves.rrb, bench->moves.rrr);
 }

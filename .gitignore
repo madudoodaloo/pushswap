@@ -1,0 +1,25 @@
+# ====================================================================
+# Global Rules: Ignore compiled binaries in any parent or subfolder
+# ====================================================================
+
+# Block every single object file recursively
+**/*.o
+
+# Block every single library archive file recursively (e.g., libft.a)
+**/*.a
+
+# Block compiled dependency files (if your Makefile generates them)
+**/*.d
+
+# ====================================================================
+# Executable Rules: Ignore your final compiled program binary
+# ====================================================================
+push_swap
+
+# ====================================================================
+# System and IDE specific ignores (Optional but recommended)
+# ====================================================================
+.DS_Store
+.vscode/
+*.swp
+*.txt
