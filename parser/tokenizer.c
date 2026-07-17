@@ -33,12 +33,11 @@ void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 	options = ft_getoptions(*cmdl, 'i');
 	max = ft_matrixlen(cmdl);
 	max -= options / 10 + (options % 10 > 0);
-	bench->elements = max; //we will be sorting based in disorder rate, not elements (?)
+	bench->elements = max; 
 	bench->benchmark = options / 10;
 	bench->strategy = options % 10;
 	i = 0;
 	while (cmdl[i] && i < max)
 		ft_node_addback(a, ft_nodenew(ft_atoi(cmdl[i++])));
 	bench->disorder = compute_disorder(a);
-	// missing performance only after execution
 }

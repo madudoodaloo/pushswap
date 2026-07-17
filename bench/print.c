@@ -26,7 +26,6 @@ static char	*get_strategy_name(int strategy_id)
 	return ("NONE");
 }
 
-
 void	ft_printstack(t_stack *stack)
 {
 	t_stack	*current;
