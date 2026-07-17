@@ -11,8 +11,8 @@ SRCF = $(wildcard *.c) \
 		$(wildcard parser/*.c) \
 		$(wildcard utils/*.c)  \
 		$(wildcard sorter/*.c) \
+		$(wildcard bench/*.c) \
 		$(wildcard ft_fprintf/*.c)
-
 
 OBJF = ${SRCF:.c=.o}
 
