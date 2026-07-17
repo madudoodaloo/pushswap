@@ -33,7 +33,7 @@ static int ft_checkint(char *str)
 		if (!ft_isdigit(str[i++]))
 			return (-2);
 	return (0);
-}	
+}
 
 // 	ft_checksyntax returns:
 //  0, if the provided input is valid
@@ -101,21 +101,12 @@ static bool ft_checkdups(char **cmdl)
 // -4: has dups
 int	parser(char **cmdl, t_stack **a, t_bench *bench)
 {
-	int ret;
-
 	if (!cmdl || !cmdl[0])
-	{
-		free_matrix(cmdl);
-		return (-2);
-	}
-	ret = ft_checksyntax(cmdl);
-	if (ret < 0 || ft_checkdups(cmdl))
-	{
-		free_matrix(cmdl);
-		if (!ret)
-			return (-4);
-		return (ret);
-	}
+		ft_error(1, a, cmdl);
+	if (ft_checksyntax(cmdl) < 0)
+		ft_error(2, a, cmdl);
+	if (ft_checkdups(cmdl))
+		ft_error(3, a, cmdl);
 	tokenizer(cmdl, a, bench);
 	free_matrix(cmdl);
 	return (0);

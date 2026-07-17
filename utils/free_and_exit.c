@@ -12,18 +12,6 @@
 
 #include "../push_swap.h"
 
-void free_matrix(char **matrix)
-{
-	int i;
-
-	if (!matrix)
-		return ;
-	i = -1;
-	while (matrix[++i])
-		free(matrix[i]);
-	free(matrix);
-}
-
 static void	free_stack(t_stack **stack)
 {
 	t_stack	*current;
@@ -39,6 +27,27 @@ static void	free_stack(t_stack **stack)
 		current = temp;
 	}
 	*stack = NULL;
+}
+void	ft_error(int error, t_stack **a, char **cmdline)
+{
+	if (cmdline)
+		free_matrix(cmdline);
+	if (a && *a)
+		free_stack(a);
+	ft_fprintf(STDERR_FILENO, "Error\n");
+	exit(error);
+}
+
+void free_matrix(char **matrix)
+{
+	int i;
+
+	if (!matrix)
+		return ;
+	i = -1;
+	while (matrix[++i])
+		free(matrix[i]);
+	free(matrix);
 }
 
 void	free_exit(t_stack **a, t_stack **b)

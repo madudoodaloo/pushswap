@@ -74,7 +74,8 @@ char	**ft_split_strs(char const *str, char *skip);
 /* utils/ft_atol.c */
 long int	ft_atol(char *str);
 
-/* utils/parsing.c */
+/* utils/free_and_exit.c */
+void	ft_error(int error, t_stack **a, char **cmdline);
 void	free_matrix(char **matrix);
 void	free_exit(t_stack **a, t_stack **b);
 
@@ -91,4 +92,8 @@ float compute_disorder(t_stack **a);
 
 /* performance.c */
 char *performance_benchmark(int elements, int total_moves);
+
+/* sorter.c */
+void	sort(t_stack **a, t_stack **b, t_bench *bench);
+
 #endif

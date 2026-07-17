@@ -41,20 +41,17 @@ int main(int ac, char **av)
 	t_stack *a;
 	t_stack *b;
 	t_bench bench;
+	char	**cmdline;
 
 	if (ac > 1)
 	{
 		init_data(&a, &b, &bench);
-		if (parser(lexer(ac, av), &a, &bench) < 0)
-			write(2, "Error\n", 6);
-		else
-		{
-			ft_printstack(a);
-			ft_printbench(1, &bench);
-		}
-		//sort(&a, &b, &bench);
-		//ft_printbench(STDERR_FILENO, &bench);
+		cmdline = lexer(ac, av);
+		parser(cmdline, &a, &bench);
+		sort(&a, &b, &bench);
+		ft_printstack(a);
+		ft_printbench(STDERR_FILENO, &bench);
 		free_exit(&a, &b);
 	}
-	return (0);
+	exit(EXIT_SUCCESS);
 }

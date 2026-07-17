@@ -50,9 +50,10 @@ void	ft_printstack(t_stack *stack)
 
 void	ft_printbench(int fd, t_bench *bench)
 {
+	int decimals;
+
 	if (!bench->benchmark)
-		fd = 1; // needs update to return ;
-		//return ;
+		return ;
 
 	ft_fprintf(fd, "[bench] wrote to fd:  %d\n", fd);
 	ft_fprintf(fd, "[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
@@ -60,7 +61,7 @@ void	ft_printbench(int fd, t_bench *bench)
 	ft_fprintf(fd, "remove above\n");
 	
 	ft_fprintf(fd, "[bench] disorder:  %d.", (int)bench->disorder);
-	int decimals = (int)(bench->disorder * 100) % 100;
+	decimals = (int)(bench->disorder * 100) % 100;
 	if (decimals < 10)
 		ft_fprintf(fd, "0%d\n", decimals);
 	else

@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: masilva- <masilva-@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/07/16 02:48:29 by masilva-          #+#    #+#             */
-/*   Updated: 2026/07/16 02:48:29 by masilva-         ###   ########.fr       */
+/*   Created: 2026/07/17 18:12:15 by masilva-          #+#    #+#             */
+/*   Updated: 2026/07/17 18:12:15 by masilva-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "checker.h"
 
-void	sort(t_stack **a, t_stack **b, t_bench *bench)
+int main(int ac, char **av)
 {
-	ft_fprintf(1, "entered with %p %p %p\n", a, b, bench);
-	return ; 
+	
 }

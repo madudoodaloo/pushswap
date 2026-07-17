@@ -16,7 +16,7 @@ t_stack	*ft_nodenew(int value)
 {
 	t_stack	*new_node;
 
-	new_node = malloc(sizeof(t_stack));
+	new_node = ft_calloc(1, sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
 	new_node->n = value; 

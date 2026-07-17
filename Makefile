@@ -10,7 +10,9 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRCF = $(wildcard *.c) \
 		$(wildcard parser/*.c) \
 		$(wildcard utils/*.c)  \
+		$(wildcard sorter/*.c) \
 		$(wildcard ft_fprintf/*.c)
+
 
 OBJF = ${SRCF:.c=.o}
 
