@@ -28,6 +28,7 @@ static void	free_stack(t_stack **stack)
 	}
 	*stack = NULL;
 }
+
 void	ft_error(int error, t_stack **a, char **cmdline)
 {
 	if (cmdline)
@@ -38,9 +39,9 @@ void	ft_error(int error, t_stack **a, char **cmdline)
 	exit(error);
 }
 
-void free_matrix(char **matrix)
+void	free_matrix(char **matrix)
 {
-	int i;
+	int	i;
 
 	if (!matrix)
 		return ;

@@ -42,7 +42,6 @@ void	ft_putunsigned(unsigned int nbr)
 	ft_putunsigned(nbr % 10);
 }
 
-
 void	ft_puthex(unsigned long int nbr, int c)
 {
 	char	*str;

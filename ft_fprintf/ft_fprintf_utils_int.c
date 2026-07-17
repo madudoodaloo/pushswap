@@ -42,7 +42,6 @@ void	fpf_putunsigned(int fd, unsigned int nbr)
 	fpf_putunsigned(fd, nbr % 10);
 }
 
-
 void	fpf_puthex(int fd, unsigned long int nbr, int c)
 {
 	char	*str;

@@ -28,51 +28,51 @@
 
 typedef struct s_stack
 {
-	int n;
-	struct s_stack *next;
+	int				n;
+	struct s_stack	*next;
 }	t_stack;
 
 typedef struct s_moves
 {
-	int total;
-	int sa;
-	int sb;
-	int ss;
-	int pa;
-	int pb;
-	int ra;
-	int rb;
-	int rr;
-	int rra;
-	int rrb;
-	int rrr;
+	int	total;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	pa;
+	int	pb;
+	int	ra;
+	int	rb;
+	int	rr;
+	int	rra;
+	int	rrb;
+	int	rrr;
 }	t_moves;
 
 typedef struct s_bench
 {
-	bool benchmark; //should only write to stderr when the flag is present.
-	int strategy; //selected strategy id
-	int performance; // added an extra display on the bench, rating the program on performance
-	int elements; // total number of elements given
-	float disorder;
-	t_moves moves; // total number of ops and count of each op type.
+	bool	benchmark; //should only write to stderr when the flag is present.
+	int		strategy; //selected strategy id
+	int		performance; // extra display, rating the program on performance
+	int		elements; // total number of elements given
+	float	disorder;
+	t_moves	moves; // total number of ops and count of each op type.
 }	t_bench;
 
 /* parser.c */
 char	**lexer(int ac, char **av);
-int	parser(char **cmdl, t_stack **a, t_bench *bench);
+int		parser(char **cmdl, t_stack **a, t_bench *bench);
 
 /* tokenizer.c */
 void	tokenizer(char **cmdl, t_stack **a, t_bench *bench);
 
 /* option_handler.c */
-int	ft_getoptions(char *option, char info);
+int		ft_getoptions(char *option, char info);
 
 /* utils/ft_split_strs.c */
 char	**ft_split_strs(char const *str, char *skip);
 
 /* utils/ft_atol.c */
-long int	ft_atol(char *str);
+long	ft_atol(char *str);
 
 /* utils/free_and_exit.c */
 void	ft_error(int error, t_stack **a, char **cmdline);
@@ -84,14 +84,14 @@ void	ft_printbench(int fd, t_bench *bench);
 void	ft_printstack(t_stack *stack);
 
 /* utils/node_utils.c */
-t_stack *ft_nodenew(int value);
-void    ft_node_addback(t_stack **stack, t_stack *new_node);
+t_stack	*ft_nodenew(int value);
+void	ft_node_addback(t_stack **stack, t_stack *new_node);
 
 /* disorder.c */
-float compute_disorder(t_stack **a);
+float	compute_disorder(t_stack **a);
 
 /* performance.c */
-char *performance_benchmark(int elements, int total_moves);
+char	*performance_benchmark(int elements, int total_moves);
 
 /* sorter.c */
 void	sort(t_stack **a, t_stack **b, t_bench *bench);

@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-long int	ft_atol(char *str)
+long	ft_atol(char *str)
 {
 	size_t	i;
 	size_t	nbr;

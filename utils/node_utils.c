@@ -19,7 +19,7 @@ t_stack	*ft_nodenew(int value)
 	new_node = ft_calloc(1, sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
-	new_node->n = value; 
+	new_node->n = value;
 	new_node->next = NULL;
 	return (new_node);
 }

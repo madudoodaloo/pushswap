@@ -33,10 +33,10 @@ void	fpf_convert(int fd, char c, va_list args)
 	return ;
 }
 
-int    ft_fprintf(int fd, const char *str, ...)
+int	ft_fprintf(int fd, const char *str, ...)
 {
-	size_t		i;
-	va_list 	args;
+	size_t	i;
+	va_list	args;
 
 	i = 0;
 	va_start(args, str);

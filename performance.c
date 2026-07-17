@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-char *performance_benchmark(int elements, int total_moves)
+char	*performance_benchmark(int elements, int total_moves)
 {
 	if (elements <= 100 && total_moves < 700)
 		return ("Excellent!");

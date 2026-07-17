@@ -16,10 +16,10 @@
 //  0, if str is a valid int
 // -1, if str is outside int range
 // -2, if str contains invalid int characters
-static int ft_checkint(char *str)
+static int	ft_checkint(char *str)
 {
-	int	i;
-	long int temp;
+	int			i;
+	long int	temp;
 
 	temp = ft_atol(str);
 	if (ft_strlen(str) > 11 || temp < INT_MIN || temp > INT_MAX)
@@ -42,39 +42,41 @@ static int ft_checkint(char *str)
 // -3, if invalid option usage is detected
 static int	ft_checksyntax(char **cmdl)
 {
-	int i = 0;
-	int j = 0;
+	int	i;
+	int	j;
 
-    if (!cmdl || !cmdl[0])
-        return (-2);
-    while (cmdl[i])
-    {
+	i = 0;
+	j = 0;
+	if (!cmdl || !cmdl[0])
+		return (-2);
+	while (cmdl[i])
+	{
 		if (j >= 0)
-        	j = ft_checkint(cmdl[i]);
-        if (j == -1)
-            return (-1);
-        if (j == -2)
-        {
-            if (i == 0)
-                return (-2);
+			j = ft_checkint(cmdl[i]);
+		if (j == -1)
+			return (-1);
+		if (j == -2)
+		{
+			if (i == 0)
+				return (-2);
 			else if (ft_getoptions(cmdl[i], 'p') < 0)
-                return (-3);
-        }
-        i++;
-    }
-    return (0);
+				return (-3);
+		}
+		i++;
+	}
+	return (0);
 }
 
 // ft_checkdups returns:
 // 0, if no dups were found
 // 1, if has dups
-static bool ft_checkdups(char **cmdl)
+static bool	ft_checkdups(char **cmdl)
 {
-	bool dup;
-	long int curr;
-	long int temp;
-	int	i;
-	int j;
+	long int	curr;
+	long int	temp;
+	bool		dup;
+	int			i;
+	int			j;
 
 	i = 0;
 	dup = 0;
@@ -112,13 +114,14 @@ int	parser(char **cmdl, t_stack **a, t_bench *bench)
 	return (0);
 }
 
-// simply converts the full input into a processable array of strs, to be later on parsed, allocating memory for it
+// simply converts the full input into a processable array of strs, 
+// to be later on parsed, allocating memory for it
 char	**lexer(int ac, char **av)
 {
-	int i; //skip av[0]
-	char *str;
-	char *temp;
-	char **cmdline;
+	int		i;
+	char	*str;
+	char	*temp;
+	char	**cmdline;
 
 	i = 0;
 	str = ft_strdup("");
@@ -131,7 +134,7 @@ char	**lexer(int ac, char **av)
 		str = ft_strjoin(temp, " ");
 		free(temp);
 	}
-	cmdline = ft_split_strs(str, WHITESPACES); // needs free()
+	cmdline = ft_split_strs(str, WHITESPACES);
 	free(str);
 	return (cmdline);
 }

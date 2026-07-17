@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// this has ai intervention
 #include "../push_swap.h"
 
 static char	*get_strategy_name(int strategy_id)
@@ -49,7 +48,7 @@ void	ft_printstack(t_stack *stack)
 
 void	ft_printbench(int fd, t_bench *bench)
 {
-	int decimals;
+	int	decimals;
 
 	if (!bench->benchmark)
 		return ;
@@ -65,13 +64,16 @@ void	ft_printbench(int fd, t_bench *bench)
 		ft_fprintf(fd, "0%d\n", decimals);
 	else
 		ft_fprintf(fd, "%d\n", decimals);
-	ft_fprintf(fd, "[bench] strategy:  %s\n", get_strategy_name(bench->strategy));
+	ft_fprintf(fd, "[bench] strategy:  %s\n", 
+		get_strategy_name(bench->strategy));
 	ft_fprintf(fd, "[bench] total_ops: %d\n", bench->moves.total);
 	ft_fprintf(fd, "[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
 		bench->moves.sa, bench->moves.sb, bench->moves.ss, 
 		bench->moves.pa, bench->moves.pb);
-	ft_fprintf(fd, "[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d  rrb:  %d  rrr:  %d\n",
+	ft_fprintf(fd, "[bench] ra:  %d  rb:  %d  rr:  %d"
+		"  rra:  %d  rrb:  %d  rrr:  %d\n",
 		bench->moves.ra, bench->moves.rb, bench->moves.rr, 
 		bench->moves.rra, bench->moves.rrb, bench->moves.rrr);
-	ft_fprintf(fd, "[bench] performance: %s\n", performance_benchmark(bench->elements, bench->moves.total));
+	ft_fprintf(fd, "[bench] performance: %s\n", 
+		performance_benchmark(bench->elements, bench->moves.total));
 }

@@ -27,12 +27,12 @@ int	ft_count(int printed)
 	return (count);
 }
 
-void pf_putchar(char c)
+void	pf_putchar(char c)
 {
 	ft_count(write(1, &c, 1));
 }
 
-void pf_putstr(char *str)
+void	pf_putstr(char *str)
 {
 	if (!str)
 		str = "(null)";

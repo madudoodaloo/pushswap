@@ -14,7 +14,7 @@
 
 static int	ft_skip(int c, char *skip)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (skip[i])
@@ -35,7 +35,8 @@ static int	ft_counter(char const *str, char *skip)
 	word = 0;
 	while (str[++i])
 	{
-		if (!ft_skip(str[i], skip) && (ft_skip(str[i + 1], skip) || str[i + 1] == '\0'))
+		if (!ft_skip(str[i], skip)
+			&& (ft_skip(str[i + 1], skip) || str[i + 1] == '\0'))
 			word++;
 	}
 	return (word);
@@ -58,7 +59,7 @@ char	**ft_split_strs(char const *str, char *skip)
 		while (str[start] && ft_skip(str[start], skip))
 			start++;
 		if (!str[start])
-			break;
+			break ;
 		size = 0;
 		while (str[start + size] && !ft_skip(str[start + size], skip))
 			size++;

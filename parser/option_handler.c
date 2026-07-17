@@ -14,8 +14,8 @@
 
 int	ft_getoptions(char *option, char info)
 {
-	static int bench;
-	static int strat;
+	static int	bench;
+	static int	strat;
 
 	if (info == 'i')
 		return (bench * 10 + strat);

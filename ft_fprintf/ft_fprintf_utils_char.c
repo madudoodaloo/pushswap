@@ -31,12 +31,12 @@ int	fpf_count(int printed)
 	return (count);
 }
 
-void fpf_putchar(int fd, char c)
+void	fpf_putchar(int fd, char c)
 {
 	fpf_count(write(fd, &c, 1));
 }
 
-void fpf_putstr(int fd ,char *str)
+void	fpf_putstr(int fd, char *str)
 {
 	if (!str)
 		str = "(null)";

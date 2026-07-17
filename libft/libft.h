@@ -29,8 +29,8 @@ typedef struct s_list
 /*   PART 1   */
 
 /* new */
-int	ft_isupper(int c);
-int	ft_islower(int c);
+int		ft_isupper(int c);
+int		ft_islower(int c);
 
 /* ft_islower() || ft_isupper */
 int		ft_isalpha(int c);
@@ -141,6 +141,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
 
 #endif
