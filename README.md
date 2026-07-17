@@ -7,20 +7,20 @@ masilva-
 	- within int range
 	- only digits or signs
 	- check for adequate flagging
-- compute disorder
-	- 
-- strategy selector
+- compute disorder ☑️
+	- done
+- strategy selector ☑️
 	--simple Forces the use of your O(n2) algorithm.
 	--medium Forces the use of your O(n√n) algorithm.
 	--complex Forces the use of your O(n log n) algorithm.
 	--adaptive Forces the use of your adaptive algorithm based on disorder.
 			This is the default behavior if no selector is given
 
-- benchmark mode
+- benchmark mode ☑️
 	--bench
 	print to stderr
 
-- flag handler
+- flag handler ☑️
 	bench + strategy selector multi or single option 
 
 

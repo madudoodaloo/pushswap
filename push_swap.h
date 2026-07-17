@@ -88,4 +88,7 @@ void    ft_node_addback(t_stack **stack, t_stack *new_node);
 
 /* disorder.c */
 float compute_disorder(t_stack **a);
+
+/* performance.c */
+char *performance_benchmark(int elements, int total_moves);
 #endif

@@ -54,13 +54,7 @@ void	ft_printbench(int fd, t_bench *bench)
 		fd = 1; // needs update to return ;
 		//return ;
 
-	// Convert float disorder to whole and fractional digits
-	//disorder_whole = (int)bench.disorder;
-	//disorder_fraction = (int)((bench.disorder - disorder_whole) * 100);
-	//if (disorder_fraction < 0)
-	//	disorder_fraction = -disorder_fraction;
-
-	// Print lines matching the console layout exactly
+	ft_fprintf(fd, "[bench] wrote to fd:  %d\n", fd);
 	ft_fprintf(fd, "[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
 	ft_fprintf(fd, "[bench] elements:  %d\n", bench->elements);
 	ft_fprintf(fd, "remove above\n");
@@ -79,4 +73,5 @@ void	ft_printbench(int fd, t_bench *bench)
 	ft_fprintf(fd, "[bench] ra:  %d  rb:  %d  rr:  %d  rra:  %d  rrb:  %d  rrr:  %d\n",
 		bench->moves.ra, bench->moves.rb, bench->moves.rr, 
 		bench->moves.rra, bench->moves.rrb, bench->moves.rrr);
+	ft_fprintf(fd, "[bench] performance: %s\n", performance_benchmark(bench->elements, bench->moves.total));
 }
