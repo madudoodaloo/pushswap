@@ -139,10 +139,10 @@ void	rrr(t_stack** head_a, t_stack** head_b);
 
 //commands write and execute on the stacks
 void	commands(t_stack** head_a, t_stack** head_b, char command, char stack);
-void	s_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
-void	p_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
-void	r_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
-void	rr_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
+void	s_commands(t_stack** head_a, t_stack** head_b, char stack);
+void	p_commands(t_stack** head_a, t_stack** head_b, char stack);
+void	r_commands(t_stack** head_a, t_stack** head_b, char stack);
+void	rr_commands(t_stack** head_a, t_stack** head_b, char stack);
 
 
 /*****************************************/

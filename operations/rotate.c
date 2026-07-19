@@ -35,7 +35,7 @@ void	rr(t_stack** head_a, t_stack** head_b)
 //cola o primeiro ao ultimo (16)
 //retira o ponteiro do segundo nódulo (agora primeiro) da lista do primeiro (agora em último)
 
-void	r_commands(t_stack** head_a, t_stack** head_b, char command, char stack)
+void	r_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	write(1, "r", 1);
 	if(stack == 'a')

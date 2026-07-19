@@ -29,7 +29,7 @@ void	ss(t_stack** head_a, t_stack **head_b)
 //dá o valor do primeiro numero ao segundo 10
 //dá o valor da variável temporária ao primeiro 11
 
-void	s_commands(t_stack** head_a, t_stack** head_b, char command, char stack)
+void	s_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	write(1, "s", 1);
 	if(stack == 'a')

@@ -16,7 +16,7 @@ void	push(t_stack** receiver, t_stack** donor)
 	*receiver = b1;
 }
 
-void	p_commands(t_stack** head_a, t_stack** head_b, char command, char stack)
+void	p_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	write(1, "p", 1);
 	if(stack == 'a')

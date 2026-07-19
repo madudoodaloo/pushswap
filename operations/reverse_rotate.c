@@ -34,7 +34,7 @@ void	rrr(t_stack** head_a, t_stack** head_b)
 //torna o último nódulo como primeiro
 //anula a ligação entre o último e o penúltimo nódulo
 
-void	rr_commands(t_stack** head_a, t_stack** head_b, char command, char stack)
+void	rr_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	write(1, "rr", 2);
 	if(stack == 'a')
