@@ -17,7 +17,7 @@ float	compute_disorder(t_stack **a)
 	int		mistakes;
 	int		total_pairs;
 	t_stack	*curr;
-	t_stack	*temp;
+	t_stack *temp;
 
 	mistakes = 0;
 	total_pairs = 0;

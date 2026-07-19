@@ -29,6 +29,7 @@
 typedef struct s_stack
 {
 	int				n;
+	int				key;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -58,42 +59,97 @@ typedef struct s_bench
 	t_moves	moves; // total number of ops and count of each op type.
 }	t_bench;
 
-/* parser.c */
+
+/*****************************************/
+/*			bench						 */
+/*****************************************/
+
+/* bench/disorder.c */
+float	compute_disorder(t_stack **a);
+
+/* bench/performance.c */
+char	*performance_benchmark(int elements, int total_moves);
+
+/* bench/print */
+void	ft_printbench(int fd, t_bench *bench);
+void	ft_printstack(t_stack *stack);
+
+
+/*****************************************/
+/*			parser						 */
+/*****************************************/
+
+/* parser/option_handler.c */
+int		ft_getoptions(char *option, char info);
+
+/* parser/parser.c */
 char	**lexer(int ac, char **av);
 int		parser(char **cmdl, t_stack **a, t_bench *bench);
 
-/* tokenizer.c */
+/* parser/tokenizer.c */
 void	tokenizer(char **cmdl, t_stack **a, t_bench *bench);
 
-/* option_handler.c */
-int		ft_getoptions(char *option, char info);
 
-/* utils/ft_split_strs.c */
-char	**ft_split_strs(char const *str, char *skip);
-
-/* utils/ft_atol.c */
-long	ft_atol(char *str);
+/*****************************************/
+/*			utils						 */
+/*****************************************/
 
 /* utils/free_and_exit.c */
 void	ft_error(int error, t_stack **a, char **cmdline);
 void	free_matrix(char **matrix);
 void	free_exit(t_stack **a, t_stack **b);
 
-/* utils/print */
-void	ft_printbench(int fd, t_bench *bench);
-void	ft_printstack(t_stack *stack);
+/* utils/ft_atol.c */
+long	ft_atol(char *str);
+
+/* utils/ft_split_strs.c */
+char	**ft_split_strs(char const *str, char *skip);
 
 /* utils/node_utils.c */
 t_stack	*ft_nodenew(int value);
 void	ft_node_addback(t_stack **stack, t_stack *new_node);
 
-/* disorder.c */
-float	compute_disorder(t_stack **a);
-
-/* performance.c */
-char	*performance_benchmark(int elements, int total_moves);
-
 /* sorter.c */
 void	sort(t_stack **a, t_stack **b, t_bench *bench);
+
+
+
+/*****************************************/
+/*			operations					 */
+/*****************************************/
+
+
+//swaps
+void	sa(t_stack** head);
+void	sb(t_stack** head);
+void	ss(t_stack** head_a, t_stack **head_b);
+
+//push
+void	push(t_stack** head_a, t_stack** head_b);
+
+//rotates
+void	ra(t_stack** head);
+void	rb(t_stack** head);
+void	rr(t_stack** head_a,t_stack** head_b);
+
+//reverse rotates
+void	rra(t_stack** head);
+void	rrb(t_stack** head);
+void	rrr(t_stack** head_a, t_stack** head_b);
+
+//commands write and execute on the stacks
+void	commands(t_stack** head_a, t_stack** head_b, char command, char stack);
+void	s_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
+void	p_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
+void	r_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
+void	rr_commands(t_stack** head_a, t_stack** head_b, char command, char stack);
+
+
+/*****************************************/
+/*			algorithms					 */
+/*****************************************/
+
+/* algs/simple.c */
+void	simple_algorithm(t_stack** head_a, t_stack** head_b);
 
 #endif
