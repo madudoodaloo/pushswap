@@ -26,7 +26,7 @@ size_t	ft_linelen(const char *str)
 	return (i);
 }
 
-char	*ft_strjoin(char *line, char *buff)
+char	*ft_linejoin(char *line, char *buff)
 {
 	char	*new;
 	size_t	i;

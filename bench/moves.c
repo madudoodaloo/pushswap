@@ -12,7 +12,7 @@
 
 #include "../push_swap.h"
 
-void	ft_registermoves(char *line, t_bench *bench)
+void	register_move(char *line, t_bench *bench)
 {
 	if (ft_strncmp(line, "sa\n", 3))
 		bench->moves.sa += 1;
@@ -51,7 +51,7 @@ void	get_moves(t_bench *bench)
 		line = get_next_line(1);
 		if (line == NULL)
 			break ;
-		ft_countmove(line, bench);
+		register_move(line, bench);
 		free(line);
 	}
 }

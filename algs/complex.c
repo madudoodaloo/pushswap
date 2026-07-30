@@ -20,16 +20,16 @@ int number_of_bits(int number)
 int find_bits(t_stack** head)
 {
 	int		bits;
-	int		neg;
+//	int		neg;
 	t_stack*	node;
 
 	node = *head;
-	bits = number_of_bits(node->number);
-	neg = 0;
+	bits = number_of_bits(node->n);
+//	neg = 0;
 	while(node)
 	{
-		if (bits < number_of_bits(node->number))
-			bits = number_of_bits(node->number);
+		if (bits < number_of_bits(node->n))
+			bits = number_of_bits(node->n);
 		node = node->next;
 	}
 	return (bits);
@@ -42,7 +42,7 @@ int	check_bit(int number, int bit)
 }
 
 //esta funao procura os numeros negativos no stack e coloca-os abaio dos numeros positivos
-void revert(t_stack** head_a, t_stack** head_b)
+void revert(t_stack **head_a, t_stack **head_b)
 {
 	int length;
 	int i;
@@ -55,13 +55,13 @@ void revert(t_stack** head_a, t_stack** head_b)
 	node = *head_a;
 	while(node)
 	{
-		if(node->number < 0)
+		if(node->n < 0)
 			check++;
 		node = node->next;
 	}
 	while((i < length) && (check != 0))
 	{
-		if((*head_a)->number < 0)
+		if((*head_a)->n < 0)
 			commands(head_a, head_b, 'p', 'b');
 		else
 			commands(head_a, head_b, 'r', 'a');
@@ -71,7 +71,7 @@ void revert(t_stack** head_a, t_stack** head_b)
 		commands(head_a, head_b, 'p', 'a');
 }
 
-void complex_algorithm(t_4stack** head_a, t_4stack** head_b)
+void complex_algorithm(t_stack** head_a, t_stack** head_b)
 {
 	int bits;
 	int bit;
@@ -86,7 +86,7 @@ void complex_algorithm(t_4stack** head_a, t_4stack** head_b)
 		i = 0;
 		while(i < length)
 		{
-			if (check_bit((*head_a)->number, bit) == 0)
+			if (check_bit((*head_a)->n, bit) == 0)
 				commands(head_a, head_b, 'p', 'b');
 			else
 				commands(head_a, head_b, 'r', 'a');

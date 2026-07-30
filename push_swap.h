@@ -110,8 +110,10 @@ t_stack	*ft_nodenew(int value);
 void	ft_node_addback(t_stack **stack, t_stack *new_node);
 
 /* sorter.c */
-void	sort(t_stack **a, t_stack **b, t_bench *bench);
+void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench);
 
+void	get_moves(t_bench *bench);
+void	register_move(char *line, t_bench *bench);
 
 
 /*****************************************/
@@ -138,12 +140,13 @@ void	rrb(t_stack** head);
 void	rrr(t_stack** head_a, t_stack** head_b);
 
 //commands write and execute on the stacks
-void	commands(t_stack** head_a, t_stack** head_b, char command, char stack);
 void	s_commands(t_stack** head_a, t_stack** head_b, char stack);
 void	p_commands(t_stack** head_a, t_stack** head_b, char stack);
 void	r_commands(t_stack** head_a, t_stack** head_b, char stack);
 void	rr_commands(t_stack** head_a, t_stack** head_b, char stack);
 
+void	commands(t_stack** head_a, t_stack** head_b, char command, char stack);
+int		get_length(t_stack** head);
 
 /*****************************************/
 /*			algorithms					 */
@@ -153,6 +156,7 @@ void	rr_commands(t_stack** head_a, t_stack** head_b, char stack);
 void	simple_algorithm(t_stack** head_a, t_stack** head_b);
 void	medium_algorithm(t_stack** head_a, t_stack** head_b);
 void	complex_algorithm(t_stack** head_a, t_stack** head_b);
+void	adaptive_algorithm(float disorder, int elements, t_stack **a, t_stack **b);
 
 //helper functions
 int get_length(t_stack** head);
@@ -160,6 +164,5 @@ void faster_way(t_stack** head, int number, char chosen_stack);
 int lowest_with_floor(t_stack** head, int floor, int floor_check);
 int highest_with_cieling(t_stack** head, int ceiling, int ceiling_check);
 
-void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench);
 
 #endif

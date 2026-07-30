@@ -38,7 +38,7 @@ void push_chunk(t_stack** head_a, t_stack** head_b,int chunk)
 	chunk_max = chunk_boundary(head_a, (chunk + 1));
 	while(i < length)
 	{
-		if((chunk_min <= (*head_a)->number) && ((*head_a)->number < chunk_max))
+		if((chunk_min <= (*head_a)->n) && ((*head_a)->n < chunk_max))
 		{
 			commands(head_a, head_b, 'p', 'b');
 		}
@@ -62,7 +62,7 @@ void medium_algorithm(t_stack** head_a, t_stack** head_b)
 		while(*head_b)
 		{
 			highest = highest_with_cieling(head_b, 0, 0);
-			while((*head_b)->number != highest)
+			while((*head_b)->n != highest)
 				faster_way(head_b, highest, 'b');
 			commands(head_a, head_b, 'p', 'a');
 		}

@@ -26,7 +26,7 @@ char	*get_next_line(int fd)
 	line = NULL;
 	while (buff[fd][0] || read(fd, buff[fd], BUFFER_SIZE) > 0)
 	{
-		line = ft_strjoin(line, buff[fd]);
+		line = ft_linejoin(line, buff[fd]);
 		if (ft_clean(buff[fd]))
 			break ;
 	}

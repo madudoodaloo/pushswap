@@ -13,9 +13,9 @@ void	commands(t_stack** head_a, t_stack** head_b, char command, char stack)
 		rr_commands(head_a, head_b, stack);
 }
 
-int get_length(stack** head)
+int get_length(t_stack** head)
 {
-	stack*	node;
+	t_stack*	node;
 	int		length;
 
 	length = 0;

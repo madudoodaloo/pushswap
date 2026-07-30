@@ -8,14 +8,14 @@ int lowest_with_floor(t_stack** head, int floor, int floor_check)
 	int		true_lowest;
 
 	node = *head;
-	lowest = (*head)->number;
+	lowest = (*head)->n;
 	true_lowest = lowest;
 	while(node)
 	{
-		if((node->number < lowest) && (node->number > floor))
-			lowest = node->number;
-		if(node->number < true_lowest)
-			true_lowest = node->number;
+		if((node->n < lowest) && (node->n > floor))
+			lowest = node->n;
+		if(node->n < true_lowest)
+			true_lowest = node->n;
 		node = node->next;
 	}
 	if(floor_check == 0)
@@ -33,14 +33,14 @@ int highest_with_cieling(t_stack** head, int ceiling, int ceiling_check)
 	int		true_highest;
 
 	node = *head;
-	highest = node->number;
+	highest = node->n;
 	true_highest = highest;
 	while(node)
 	{
-		if((node->number > highest) && (node->number < ceiling))
-			highest = node->number;
-		if(node->number > true_highest)
-			true_highest = node->number;
+		if((node->n > highest) && (node->n < ceiling))
+			highest = node->n;
+		if(node->n > true_highest)
+			true_highest = node->n;
 		node = node->next;
 	}
 	if(ceiling_check == 0)
@@ -62,7 +62,7 @@ void faster_way(t_stack** head, int number, char chosen_stack)
 		node = node->next;
 	}
 	node = *head;
-	while((node) && (node->number != number))
+	while((node) && (node->n != number))
 	{
 		number_len++;
 		node = node->next;
@@ -80,7 +80,7 @@ void	simple_algorithm(t_stack** head_a, t_stack** head_b)
 	while(*head_a)
 	{
 		lowest = lowest_with_floor(head_a, 0, 0);
-		while((*head_a)->number != lowest)
+		while((*head_a)->n != lowest)
 			{
 				faster_way(head_a, lowest, 'a');
 			}

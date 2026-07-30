@@ -23,7 +23,7 @@
 # include <stdio.h>
 
 char	*get_next_line(int fd);
-char	*ft_strjoin(char *line, char *buff);
+char	*ft_linejoin(char *line, char *buff);
 int		ft_clean(char *buff);
 size_t	ft_linelen(const char *str);
 

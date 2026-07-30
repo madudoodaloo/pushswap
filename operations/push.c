@@ -3,7 +3,6 @@
 void	push(t_stack** receiver, t_stack** donor)
 {
 	t_stack*	b1;
-	//t_stack*	temp;
 
 	if(!(*donor))
 		return;
