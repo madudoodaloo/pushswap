@@ -12,3 +12,19 @@ void	commands(t_stack** head_a, t_stack** head_b, char command, char stack)
 	else if(command == 'd')
 		rr_commands(head_a, head_b, stack);
 }
+
+int get_length(stack** head)
+{
+	stack*	node;
+	int		length;
+
+	length = 0;
+	node = *head;
+	while(node)
+	{
+		length++;
+		node = node->next;
+	}
+	return (length);
+}
+

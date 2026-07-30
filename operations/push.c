@@ -18,17 +18,14 @@ void	push(t_stack** receiver, t_stack** donor)
 
 void	p_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
-	write(1, "p", 1);
 	if(stack == 'a')
 	{
-		write(1, "a", 1);
-		write(1, "\n", 1);
-		push	(head_a, head_b);
+		ft_fprintf(STDOUT_FILENO, "pa\n");
+		push(head_a, head_b);
 	}
 	if(stack == 'b')
 	{
-		write(1, "b", 1);
-		write(1, "\n", 1);
-		push	(head_b, head_a);
+		ft_fprintf(STDOUT_FILENO, "pb\n");
+		push(head_b, head_a);
 	}
 }

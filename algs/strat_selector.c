@@ -12,8 +12,15 @@
 
 #include "../push_swap.h"
 
-void	sort(t_stack **a, t_stack **b, t_bench *bench)
+void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench)
 {
-	ft_fprintf(1, "entered with %p %p %p\n", a, b, bench);
+	if (!bench->strategy || bench->strategy == 4)
+		adaptive_algorithm(bench->disorder, a, b);
+	else if (bench->strategy == 1)
+		simple_algorithm(a, b);
+	else if (bench->strategy == 2)
+		medium_algorithm(a, b);
+	else if (bench->strategy == 3)
+		complex_algorithm(a, b);
 	return ; 
 }

@@ -31,23 +31,19 @@ void	ss(t_stack** head_a, t_stack **head_b)
 
 void	s_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
-	write(1, "s", 1);
 	if(stack == 'a')
 	{
-		write(1, "a", 1);
-		write(1, "\n", 1);
+		ft_fprintf(STDOUT_FILENO, "sa\n");
 		sa(head_a);
 	}
 	if(stack == 'b')
 	{
-		write(1, "b", 1);
-		write(1, "\n", 1);
+		ft_fprintf(STDOUT_FILENO, "sb\n");
 		sb(head_b);
 	}
 	if(stack == 's')
 	{
-		write(1, "s", 1);
-		write(1, "\n", 1);
+		ft_fprintf(STDOUT_FILENO, "ss\n");
 		ss(head_a, head_b);
 	}
 }

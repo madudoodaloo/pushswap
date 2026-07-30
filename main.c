@@ -35,22 +35,28 @@ void	init_data(t_stack **a, t_stack **b, t_bench *bench)
 	bench->moves.rrr = 0;
 }
 
-int	main(int ac, char **av)
+int push_swap(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
 	t_bench	bench;
 	char	**cmdline;
-
+	
 	if (ac > 1)
 	{
 		init_data(&a, &b, &bench);
 		cmdline = lexer(ac, av);
 		parser(cmdline, &a, &bench);
-		sort(&a, &b, &bench);
+		ft_printstack(a);
+		strategy_selector(&a, &b, &bench);
 		ft_printstack(a);
 		ft_printbench(STDERR_FILENO, &bench);
 		free_exit(&a, &b);
 	}
-	exit(EXIT_SUCCESS);
+	return (0);
+}
+
+int	main(int ac, char **av)
+{
+	return (push_swap(ac, av));
 }

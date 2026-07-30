@@ -22,6 +22,8 @@
 # define WHITESPACES "\t\n\v\f\r " // 9 to 13 and 32 ascii values
 # include "libft/libft.h"
 # include "ft_fprintf/ft_fprintf.h"
+# include "get_next_line/get_next_line_bonus.h"
+
 # include <stddef.h>
 # include <stdbool.h>
 # include <unistd.h>
@@ -59,7 +61,6 @@ typedef struct s_bench
 	t_moves	moves; // total number of ops and count of each op type.
 }	t_bench;
 
-
 /*****************************************/
 /*			bench						 */
 /*****************************************/
@@ -73,7 +74,6 @@ char	*performance_benchmark(int elements, int total_moves);
 /* bench/print */
 void	ft_printbench(int fd, t_bench *bench);
 void	ft_printstack(t_stack *stack);
-
 
 /*****************************************/
 /*			parser						 */
@@ -149,7 +149,17 @@ void	rr_commands(t_stack** head_a, t_stack** head_b, char stack);
 /*			algorithms					 */
 /*****************************************/
 
-/* algs/simple.c */
+//algorithms
 void	simple_algorithm(t_stack** head_a, t_stack** head_b);
+void	medium_algorithm(t_stack** head_a, t_stack** head_b);
+void	complex_algorithm(t_stack** head_a, t_stack** head_b);
+
+//helper functions
+int get_length(t_stack** head);
+void faster_way(t_stack** head, int number, char chosen_stack);
+int lowest_with_floor(t_stack** head, int floor, int floor_check);
+int highest_with_cieling(t_stack** head, int ceiling, int ceiling_check);
+
+void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench);
 
 #endif
