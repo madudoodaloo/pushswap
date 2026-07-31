@@ -33,7 +33,6 @@ void	init_data(t_stack **a, t_stack **b, t_bench *bench)
 	bench->moves.rra = 0;
 	bench->moves.rrb = 0;
 	bench->moves.rrr = 0;
-	get_bench(bench);
 }
 
 int push_swap(int ac, char **av)
@@ -46,11 +45,12 @@ int push_swap(int ac, char **av)
 	if (ac > 1)
 	{
 		init_data(&a, &b, &bench);
+		get_bench(&bench);
 		cmdline = lexer(ac, av);
 		parser(cmdline, &a, &bench);
 		ft_printstack(a);
 		strategy_selector(&a, &b, &bench);
-		//ft_printstack(a);
+		ft_printstack(a);
 		ft_printbench(STDERR_FILENO, &bench);
 		free_exit(&a, &b);
 	}

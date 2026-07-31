@@ -55,7 +55,7 @@ static int	ft_checksyntax(char **cmdl)
 	{
 		if (j == 0)
 			j = ft_checkint(cmdl[i]);
-		else if (j == -1)
+		if (j == -1)
 			return (-1);
 		else if (j == -2)
 		{

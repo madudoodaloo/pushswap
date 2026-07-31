@@ -52,7 +52,8 @@ void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 	int	max;
 	int	i;
 
-	options = ft_getoptions(*cmdl, 'i');
+	options = ft_getoptions(NULL, 'i');
+	printf("get: %i\n", options);
 	max = ft_matrixlen(cmdl);
 	max -= options / 10 + (options % 10 > 0);
 	bench->elements = max;
