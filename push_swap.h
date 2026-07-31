@@ -31,7 +31,6 @@
 typedef struct s_stack
 {
 	int				n;
-	int				key;
 	struct s_stack	*next;
 }	t_stack;
 

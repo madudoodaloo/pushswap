@@ -48,7 +48,7 @@ void	get_moves(t_bench *bench)
 
 	while (1)
 	{
-		line = get_next_line(1);
+		//line = get_next_line(1);
 		if (line == NULL)
 			break ;
 		register_move(line, bench);

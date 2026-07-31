@@ -15,12 +15,12 @@
 void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench)
 {
 	if (!bench->strategy || bench->strategy == 4)
-		adaptive_algorithm(bench->disorder, bench->elements, a, b);
+		adaptive_algorithm(bench->disorder, bench->elements, a, b, bench);
 	else if (bench->strategy == 1)
-		simple_algorithm(a, b);
+		simple_algorithm(a, b, bench);
 	else if (bench->strategy == 2)
-		medium_algorithm(a, b);
+		medium_algorithm(a, b, bench);
 	else if (bench->strategy == 3)
-		complex_algorithm(a, b);
+		complex_algorithm(a, b, bench);
 	return ; 
 }

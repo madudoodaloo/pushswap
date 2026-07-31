@@ -36,7 +36,7 @@ void push_chunk(t_stack** head_a, t_stack** head_b,int chunk)
 	length = get_length(head_a);
 	chunk_min = chunk_boundary(head_a, chunk);
 	chunk_max = chunk_boundary(head_a, (chunk + 1));
-	while(i < length)
+	while (i < length)
 	{
 		if((chunk_min <= (*head_a)->n) && ((*head_a)->n < chunk_max))
 		{
@@ -48,7 +48,7 @@ void push_chunk(t_stack** head_a, t_stack** head_b,int chunk)
 	}
 }
 
-void medium_algorithm(t_stack** head_a, t_stack** head_b)
+void medium_algorithm(t_stack** head_a, t_stack** head_b, t_bench *bench)
 {
 	int length;
 	int chunk;

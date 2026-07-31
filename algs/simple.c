@@ -18,10 +18,8 @@ int lowest_with_floor(t_stack** head, int floor, int floor_check)
 			true_lowest = node->n;
 		node = node->next;
 	}
-	if(floor_check == 0)
-		{
-			return (true_lowest);
-		}
+	if (floor_check == 0)
+		return (true_lowest);
 	return (lowest);
 }
 
