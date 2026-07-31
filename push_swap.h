@@ -63,7 +63,7 @@ typedef struct s_bench
 /*****************************************/
 /*			bench						 */
 /*****************************************/
-
+t_bench	*get_bench(t_bench *bench);
 /* bench/disorder.c */
 float	compute_disorder(t_stack **a);
 
@@ -112,7 +112,7 @@ void	ft_node_addback(t_stack **stack, t_stack *new_node);
 void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench);
 
 void	get_moves(t_bench *bench);
-void	register_move(char *line, t_bench *bench);
+void	register_move(char *line);
 
 
 /*****************************************/

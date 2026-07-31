@@ -33,6 +33,7 @@ void	init_data(t_stack **a, t_stack **b, t_bench *bench)
 	bench->moves.rra = 0;
 	bench->moves.rrb = 0;
 	bench->moves.rrr = 0;
+	get_bench(bench);
 }
 
 int push_swap(int ac, char **av)

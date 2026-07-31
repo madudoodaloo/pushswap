@@ -53,7 +53,6 @@ void	ft_printbench(int fd, t_bench *bench)
 	if (!bench->benchmark)
 		return ;
 	printf("is here\n");
-	get_moves(bench);
 	ft_fprintf(fd, "[bench] wrote to fd:  %d\n", fd);
 	ft_fprintf(fd, "[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
 	ft_fprintf(fd, "[bench] elements:  %d\n", bench->elements);

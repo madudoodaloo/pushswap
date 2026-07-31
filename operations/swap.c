@@ -33,17 +33,17 @@ void	s_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	if(stack == 'a')
 	{
-		ft_fprintf(STDOUT_FILENO, "sa\n");
+		register_move("sa\n");
 		sa(head_a);
 	}
 	if(stack == 'b')
 	{
-		ft_fprintf(STDOUT_FILENO, "sb\n");
+		register_move("sb\n");
 		sb(head_b);
 	}
 	if(stack == 's')
 	{
-		ft_fprintf(STDOUT_FILENO, "ss\n");
+		register_move("ss\n");
 		ss(head_a, head_b);
 	}
 }

@@ -12,8 +12,20 @@
 
 #include "../push_swap.h"
 
-void	register_move(char *line, t_bench *bench)
+t_bench	*get_bench(t_bench *bench)
 {
+	static t_bench	*address;
+
+	if (bench)
+		address = bench;
+	return (address);
+}
+
+void	register_move(char *line)
+{
+	t_bench *bench;
+
+	bench = get_bench(NULL);
 	if (ft_strncmp(line, "sa\n", 3))
 		bench->moves.sa += 1;
 	else if (ft_strncmp(line, "sb\n", 3))
@@ -38,20 +50,7 @@ void	register_move(char *line, t_bench *bench)
 		bench->moves.rrr += 1;
 	else
 		ft_fprintf(STDERR_FILENO, "Invalid move\n");
+	ft_fprintf(STDOUT_FILENO, "%s", line);
 	bench->moves.total += 1;
-}
 
-
-void	get_moves(t_bench *bench)
-{
-	char *line;
-
-	while (1)
-	{
-		//line = get_next_line(1);
-		if (line == NULL)
-			break ;
-		register_move(line, bench);
-		free(line);
-	}
 }

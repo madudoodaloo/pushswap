@@ -38,17 +38,17 @@ void	rr_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	if(stack == 'a')
 	{
-		ft_fprintf(STDOUT_FILENO, "rra\n");
+		register_move("rra\n");
 		rra(head_a);
 	}
 	if(stack == 'b')
 	{
-		ft_fprintf(STDOUT_FILENO, "rrb\n");
+		register_move("rrb\n");
 		rrb(head_b);
 	}
 	if(stack == 'r')
 	{
-		ft_fprintf(STDOUT_FILENO, "rrr\n");
+		register_move("rrr\n");
 		rrr(head_a, head_b);
 	}
 }

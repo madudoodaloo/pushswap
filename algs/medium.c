@@ -25,7 +25,7 @@ int chunk_boundary(t_stack** head, int chunk)
 }
 
 //encontra todos os elementos do subgrupo no stack A e puxa-os para o B
-void push_chunk(t_stack** head_a, t_stack** head_b,int chunk)
+void push_chunk(t_stack** head_a, t_stack** head_b, int chunk)
 {
 	int i;
 	int length;
@@ -48,7 +48,7 @@ void push_chunk(t_stack** head_a, t_stack** head_b,int chunk)
 	}
 }
 
-void medium_algorithm(t_stack** head_a, t_stack** head_b, t_bench *bench)
+void medium_algorithm(t_stack** head_a, t_stack** head_b)
 {
 	int length;
 	int chunk;

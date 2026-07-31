@@ -19,12 +19,12 @@ void	p_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	if(stack == 'a')
 	{
-		ft_fprintf(STDOUT_FILENO, "pa\n");
+		register_move("pa\n");
 		push(head_a, head_b);
 	}
 	if(stack == 'b')
 	{
-		ft_fprintf(STDOUT_FILENO, "pb\n");
+		register_move("pb\n");
 		push(head_b, head_a);
 	}
 }
