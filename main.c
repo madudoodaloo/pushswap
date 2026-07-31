@@ -48,9 +48,9 @@ int push_swap(int ac, char **av)
 		get_bench(&bench);
 		cmdline = lexer(ac, av);
 		parser(cmdline, &a, &bench);
-		ft_printstack(a);
+		//ft_printstack(a);
 		strategy_selector(&a, &b, &bench);
-		ft_printstack(a);
+		//ft_printstack(a);
 		ft_printbench(STDERR_FILENO, &bench);
 		free_exit(&a, &b);
 	}

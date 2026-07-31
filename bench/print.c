@@ -52,18 +52,18 @@ void	ft_printbench(int fd, t_bench *bench)
 
 	if (!bench->benchmark)
 		return ;
-	ft_fprintf(fd, "[bench] wrote to fd:  %d\n", fd);
-	ft_fprintf(fd, "[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
-	ft_fprintf(fd, "[bench] elements:  %d\n", bench->elements);
-	ft_fprintf(fd, "remove above\n");
+	//ft_fprintf(fd, "[bench] wrote to fd:  %d\n", fd);
+	//ft_fprintf(fd, "[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
+	//ft_fprintf(fd, "[bench] elements:  %d\n", bench->elements);
+	//ft_fprintf(fd, "remove above\n");
 	
 	ft_fprintf(fd, "[bench] disorder:  %d.", (int)bench->disorder);
 	decimals = (int)(bench->disorder * 100) % 100;
 	if (decimals < 10)
-		ft_fprintf(fd, "0%d\n", decimals);
+		ft_fprintf(fd, "0%d%%\n", decimals);
 	else
-		ft_fprintf(fd, "%d\n", decimals);
-	ft_fprintf(fd, "[bench] strategy:  %s\n", 
+		ft_fprintf(fd, "%d%%\n", decimals);
+	ft_fprintf(fd, "[bench] strategy:  %s\n",
 		get_strategy_name(bench->strategy));
 	ft_fprintf(fd, "[bench] total_ops: %d\n", bench->moves.total);
 	ft_fprintf(fd, "[bench] sa:  %d  sb:  %d  ss:  %d  pa:  %d  pb:  %d\n",
@@ -73,6 +73,6 @@ void	ft_printbench(int fd, t_bench *bench)
 		"  rra:  %d  rrb:  %d  rrr:  %d\n",
 		bench->moves.ra, bench->moves.rb, bench->moves.rr, 
 		bench->moves.rra, bench->moves.rrb, bench->moves.rrr);
-	ft_fprintf(fd, "[bench] performance: %s\n", 
-		performance_benchmark(bench->elements, bench->moves.total));
+	//ft_fprintf(fd, "[bench] performance: %s\n", 
+	//	performance_benchmark(bench->elements, bench->moves.total));
 }
