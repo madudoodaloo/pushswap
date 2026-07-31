@@ -21,14 +21,32 @@ static int	ft_strhascontent(char *str)
 	int	i;
 
 	i = 0;
+	if (!str || !str[0])
+		return (-1);
 	while (str[i])
+	{
 		if ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 			i++;
-	if (i == 0 || str[i] == '\0')
+		else
+			break ;
+	}
+	if (str[i] == '\0')
 		return (-1);
 	return (0);
 }
 
+
+char *join_and_free(char *str1, char *str2)
+{
+	char *temp;
+
+	temp = NULL;
+	if (str1 && str2)
+		temp = ft_strjoin(str1, str2);
+	if (str1)
+		free(str1);
+	return (temp);
+}
 
 // checks for null string arguments "", triggering error upon occurence.
 // simply converts the full input into a processable array of strs, 
@@ -44,16 +62,15 @@ char	**lexer(int ac, char **av)
 	while (++i < ac)
 		if (ft_strhascontent(av[i]) < 0)
 			return (NULL);
+	i = 0;
 	str = ft_strdup("");
+	while (str && ++i < ac)
+	{
+		temp = join_and_free(str, av[i]);
+		str = join_and_free(temp, " ");
+	}
 	if (!str)
 		return (NULL);
-	while (++i < ac)
-	{
-		temp = ft_strjoin(str, av[i]);
-		free(str);
-		str = ft_strjoin(temp, " ");
-		free(temp);
-	}
 	cmdline = ft_split_strs(str, WHITESPACES);
 	free(str);
 	return (cmdline);
