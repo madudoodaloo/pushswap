@@ -73,6 +73,6 @@ void	ft_printbench(int fd, t_bench *bench)
 		"  rra:  %d  rrb:  %d  rrr:  %d\n",
 		bench->moves.ra, bench->moves.rb, bench->moves.rr, 
 		bench->moves.rra, bench->moves.rrb, bench->moves.rrr);
-	//ft_fprintf(fd, "[bench] performance: %s\n", 
-	//	performance_benchmark(bench->elements, bench->moves.total));
+	ft_fprintf(fd, "[bench] performance: %s\n", 
+		performance_benchmark(bench->elements, bench->moves.total));
 }

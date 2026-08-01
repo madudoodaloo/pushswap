@@ -18,7 +18,7 @@ char	*performance_benchmark(int elements, int total_moves)
 		return ("Excellent!");
 	else if (elements <= 100 && total_moves < 1500)
 		return ("Good");
-	else if (elements <= 100 && total_moves < 700)
+	else if (elements <= 100 && total_moves < 2000)
 		return ("Minimum");
 	else if (elements <= 500 && total_moves < 5500)
 		return ("Excellent!");
@@ -27,5 +27,5 @@ char	*performance_benchmark(int elements, int total_moves)
 	else if (elements <= 500 && total_moves < 12000)
 		return ("Minimum");
 	else
-		return ("N/A");
+		return ("Bad");
 }

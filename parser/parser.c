@@ -99,7 +99,7 @@ static bool	ft_checkdups(char **cmdl)
 
 //  parser returns:
 //  0: success
-// -1: cmdl is empty or malloc failed to allocate it
+// -1: cmdl has empty args or malloc failed to allocate it in lexer()
 // -2: wrong cmdline - invalid int format or flag input
 // -3: ints list has dups
 

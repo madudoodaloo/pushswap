@@ -35,7 +35,7 @@ static int	ft_strhascontent(char *str)
 	return (0);
 }
 
-
+// handles calls of strjoin, protecting it from memory leaks in case of error.
 char *join_and_free(char *str1, char *str2)
 {
 	char *temp;
@@ -72,6 +72,7 @@ char	**lexer(int ac, char **av)
 	if (!str)
 		return (NULL);
 	cmdline = ft_split_strs(str, WHITESPACES);
-	free(str);
+	if (str)
+		free(str);
 	return (cmdline);
 }
