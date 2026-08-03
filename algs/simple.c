@@ -53,6 +53,7 @@ void faster_way(t_stack** head, int number, char chosen_stack)
 	int number_len;
 
 	node = *head;
+	number_len = 0;
 	length = 0;
 	while(node->next)
 	{
@@ -75,7 +76,6 @@ void	simple_algorithm(t_stack** head_a, t_stack** head_b)
 {
 	int	lowest;
 
-	printf("simple algo\n");
 	while(*head_a)
 	{
 		lowest = lowest_with_floor(head_a, 0, 0);

@@ -78,7 +78,6 @@ void complex_algorithm(t_stack** head_a, t_stack** head_b)
 	int length;
 	int i;
 
-	printf("complex algo\n");
 	bits = find_bits(head_a);
 	bit = 0;
 	length = get_length(head_a);

@@ -2,8 +2,12 @@ NAME		= push_swap
 BONUS_NAME	= checker
 
 CC			= cc
-CFLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address
+CFLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address 
 INCLUDE 	= push_swap.h checker/checker.h
+
+
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
+         
 
 # libft handler
 LIBFT_DIR	= ./libft

@@ -34,8 +34,8 @@ float	compute_disorder(t_stack **a)
 		}
 		curr = curr->next;
 	}
-	float dis = ((float)mistakes / (float)total_pairs) * 100.0f;
-	printf("total pairs: %d | mistakes: %d | disorder: %f\n", total_pairs, mistakes, dis);
+	//float dis = ((float)mistakes / (float)total_pairs) * 100.0f;
+	//printf("total pairs: %d | mistakes: %d | disorder: %f\n", total_pairs, mistakes, dis);
 	if (!total_pairs)
 		return (0.0f);
 	return (((float)mistakes / (float)total_pairs) * 100.0f);
