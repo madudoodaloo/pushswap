@@ -62,30 +62,18 @@ void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
 	}
 }
 
-void	sort_chunk(t_stack **head_a, t_stack **head_b, int chunk)
+void	sort_chunk(t_stack **head_a, t_stack **head_b)
 {
-	int		chunk_length;
-	int		i;
 	int		highest;
 	t_stack	*node;
 
-	chunk++;
-	chunk_length = 0;
-	i = 0;
 	node = *head_b;
-/* 	while (node)
-	{
-		if (node->block == chunk)
-		chunk_length++;
-		node = node->next;
-	} */
 	while (*head_b)
 	{
 		highest = highest_with_cieling(head_b, 0, 0);
 		while((*head_b)->n != highest)
 			faster_way(head_b, highest, 'b');
 		commands(head_a, head_b, 'p', 'a');
-		i++;
 	}
 }
 
@@ -105,7 +93,7 @@ void medium_algorithm(t_stack **head_a, t_stack **head_b)
 	push_chunks(head_a, head_b, chunk);
 	while(*head_b)
 	{
-		sort_chunk(head_a, head_b, chunk);
+		sort_chunk(head_a, head_b);
 		chunk--;
 	}
 }
