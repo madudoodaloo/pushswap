@@ -82,6 +82,7 @@ void	ft_printstack(t_stack *stack);
 int		ft_getoptions(char *option, char info);
 
 /* parser/parser.c */
+int	ft_checkint(char *str);
 char	**lexer(int ac, char **av);
 int		parser(char **cmdl, t_stack **a, t_bench *bench);
 

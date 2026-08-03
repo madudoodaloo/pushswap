@@ -17,7 +17,7 @@
 // -1, if str is outside int range or is an invalid int ("-" or "+")
 // -2, if str contains invalid int characters
 
-static int	ft_checkint(char *str)
+int	ft_checkint(char *str)
 {
 	int			i;
 	long int	temp;
