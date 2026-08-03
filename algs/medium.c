@@ -24,7 +24,7 @@ void mark_chunk(t_stack **head, int chunk, int n)
 	int		highest;
 	t_stack	*node;
 
-	highest = highest_with_cieling(head, 0, 0);
+	highest = 0;
 	while (n != 0)
 	{
 		highest = highest_without_chunk(head);
@@ -42,8 +42,8 @@ void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
 	int		check;
 	int		i;
 
-	i = 0;
-	while (i < chunk && *head_a)
+	i = 1;
+	while (i <= chunk && *head_a)
 	{
 		if ((*head_a)->block == i)
 			commands(head_a, head_b, 'p', 'b');
@@ -69,16 +69,17 @@ void	sort_chunk(t_stack **head_a, t_stack **head_b, int chunk)
 	int		highest;
 	t_stack	*node;
 
+	chunk++;
 	chunk_length = 0;
 	i = 0;
 	node = *head_b;
-	while (node)
+/* 	while (node)
 	{
 		if (node->block == chunk)
 		chunk_length++;
 		node = node->next;
-	}
-	while (i < chunk_length && *head_b)
+	} */
+	while (*head_b)
 	{
 		highest = highest_with_cieling(head_b, 0, 0);
 		while((*head_b)->n != highest)
