@@ -54,6 +54,7 @@ void medium_algorithm(t_stack** head_a, t_stack** head_b)
 	int chunk;
 	int highest;
 
+	printf("medium algo\n");
 	length = get_length(head_a);
 	chunk = pitagoras(length) - 1;
 	while(chunk >= 0)

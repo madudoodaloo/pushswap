@@ -75,6 +75,7 @@ void	simple_algorithm(t_stack** head_a, t_stack** head_b)
 {
 	int	lowest;
 
+	printf("simple algo\n");
 	while(*head_a)
 	{
 		lowest = lowest_with_floor(head_a, 0, 0);

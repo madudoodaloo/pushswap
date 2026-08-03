@@ -53,17 +53,12 @@ static int	ft_checksyntax(char **cmdl)
 		return (-2);
 	while (cmdl[i])
 	{
-		if (j == 0)
-			j = ft_checkint(cmdl[i]);
+		j = ft_checkint(cmdl[i]);
 		if (j == -1)
 			return (-1);
 		else if (j == -2)
-		{
-			if (i == 0)
-				return (-2);
-			else if (ft_getoptions(cmdl[i], 'p') < 0)
+			if (ft_getoptions(cmdl[i], 'p') < 0)
 				return (-3);
-		}
 		i++;
 	}
 	return (0);
