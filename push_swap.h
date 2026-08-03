@@ -155,7 +155,7 @@ int		get_length(t_stack** head);
 void	simple_algorithm(t_stack** head_a, t_stack** head_b);
 void	medium_algorithm(t_stack** head_a, t_stack** head_b);
 void	complex_algorithm(t_stack** head_a, t_stack** head_b);
-void	adaptive_algorithm(float disorder, int elements, t_stack **a, t_stack **b);
+void	adaptive_algorithm(t_bench *bench, t_stack **a, t_stack **b);
 
 //helper functions
 int get_length(t_stack** head);

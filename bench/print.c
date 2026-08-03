@@ -17,11 +17,15 @@ static char	*get_strategy_name(int strategy_id)
 	if (strategy_id == 1)
 		return ("Simple / O(n^2)");
 	if (strategy_id == 2)
-		return ("Medium / O(n log n)");
+		return ("Medium / O(n√n)");
 	if (strategy_id == 3)
 		return ("Complex / O(n log n)");
-	if (strategy_id == 4)
-		return ("Adaptive / O(n\\sqrt{n})");
+	if (strategy_id == 5)
+		return ("Adaptive / O(n^2)");
+	if (strategy_id == 6)
+		return ("Adaptive / O(n√n)");
+	if (strategy_id == 7)
+		return ("Adaptive / O(n log n)");
 	return ("NONE");
 }
 
@@ -52,11 +56,6 @@ void	ft_printbench(int fd, t_bench *bench)
 
 	if (!bench->benchmark)
 		return ;
-	//ft_fprintf(fd, "[bench] wrote to fd:  %d\n", fd);
-	//ft_fprintf(fd, "[bench] --bench:  %s\n", bench->benchmark > 0 ? "yes" : "no");
-	//ft_fprintf(fd, "[bench] elements:  %d\n", bench->elements);
-	//ft_fprintf(fd, "remove above\n");
-	
 	ft_fprintf(fd, "[bench] disorder:  %d.", (int)bench->disorder);
 	decimals = (int)(bench->disorder * 100) % 100;
 	if (decimals < 10)
