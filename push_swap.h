@@ -31,6 +31,7 @@
 typedef struct s_stack
 {
 	int				n;
+	int				block;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -144,7 +145,7 @@ void	s_commands(t_stack** head_a, t_stack** head_b, char stack);
 // utils.c
 void	commands(t_stack** head_a, t_stack** head_b, char command, char stack);
 int		get_length(t_stack** head);
-
+int		pitagoras(int n);
 
 /********************************/
 /*		./algorithms/			*/

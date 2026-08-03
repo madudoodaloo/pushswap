@@ -28,3 +28,10 @@ int get_length(t_stack** head)
 	return (length);
 }
 
+int	pitagoras(int n)
+{
+    int i = 0;
+    while (i * i < n)
+        i++;
+    return (i);
+}

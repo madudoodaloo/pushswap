@@ -24,8 +24,6 @@ int	find_bits(t_stack **head)
 
 	node = *head;
 	bits = number_of_bits(node->n);
-//	int		neg;
-//	neg = 0;
 	while (node)
 	{
 		if (bits < number_of_bits(node->n))
