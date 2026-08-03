@@ -40,10 +40,12 @@ void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
 {
 	t_stack	*node;
 	int		check;
+	int		i;
 
-	while (chunk != 0 && *head_a)
+	i = 0;
+	while (i < chunk && *head_a)
 	{
-		if ((*head_a)->block == chunk)
+		if ((*head_a)->block == i)
 			commands(head_a, head_b, 'p', 'b');
 		else
 			commands(head_a, head_b, 'r', 'a');
@@ -51,12 +53,12 @@ void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
 		check = 0;
 		while(node && check == 0)
 		{
-			if(node->block == chunk)
+			if(node->block == i)
 				check++;
 			node = node->next;
 		}
 		if (check == 0)
-			chunk--;
+			i++;
 	}
 }
 
