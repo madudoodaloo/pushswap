@@ -39,17 +39,17 @@ void	r_commands(t_stack** head_a, t_stack** head_b, char stack)
 {
 	if(stack == 'a')
 	{
-		register_move("ra\n");
+		register_move(get_bench(NULL), "ra\n");
 		ra(head_a);
 	}
 	if(stack == 'b')
 	{
-		register_move("rb\n");
+		register_move(get_bench(NULL), "rb\n");
 		rb(head_b);
 	}
 	if(stack == 'r')
 	{
-		register_move("rr\n");
+		register_move(get_bench(NULL), "rr\n");
 		rr(head_a, head_b);
 	}
 }

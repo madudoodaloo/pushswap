@@ -1,28 +1,28 @@
 #include "../push_swap.h"
 
-void	push(t_stack** receiver, t_stack** donor)
+void	push(t_stack **receiver, t_stack **donor)
 {
-	t_stack*	b1;
+	t_stack	*b1;
 
-	if(!(*donor))
-		return;
+	if (!(*donor))
+		return ;
 	b1 = *donor;
 	*donor = (*donor)->next;
-	if(*receiver)
+	if (*receiver)
 		b1->next = *receiver;
 	else
 		b1->next = NULL;
 	*receiver = b1;
 }
 
-void	p_commands(t_stack** head_a, t_stack** head_b, char stack)
+void	p_commands(t_stack **head_a, t_stack **head_b, char stack)
 {
-	if(stack == 'a')
+	if (stack == 'a')
 	{
 		register_move(get_bench(NULL), "pa\n");
 		push(head_a, head_b);
 	}
-	if(stack == 'b')
+	if (stack == 'b')
 	{
 		register_move(get_bench(NULL), "pb\n");
 		push(head_b, head_a);

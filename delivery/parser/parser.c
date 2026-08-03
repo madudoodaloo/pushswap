@@ -106,4 +106,3 @@ int	parser(char **cmdl, t_stack **a, t_bench *bench)
 	free_matrix(cmdl);
 	return (0);
 }
-
