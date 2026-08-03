@@ -75,7 +75,6 @@ int		ft_checkint(char *str);
 void	tokenizer(char **cmdl, t_stack **a, t_bench *bench);
 int		ft_getoptions(char *option, char info);
 
-
 /********************************/
 /*			./bench/			*/
 /********************************/
@@ -93,7 +92,6 @@ char	*performance_benchmark(int elements, int total_moves);
 // print.c 
 void	ft_printstack(t_stack *stack);
 void	ft_printbench(int fd, t_bench *bench);
-
 
 /********************************/
 /*			./utils/			*/
@@ -114,51 +112,49 @@ char	**ft_split_strs(char const *str, char *skip);
 t_stack	*ft_nodenew(int value);
 void	ft_node_addback(t_stack **stack, t_stack *new_node);
 
-
 /********************************/
 /*		./operations/			*/
 /********************************/
 
 // push.c
-void	push(t_stack** head_a, t_stack** head_b);
-void	p_commands(t_stack** head_a, t_stack** head_b, char stack);
+void	push(t_stack **head_a, t_stack **head_b);
+void	p_commands(t_stack **head_a, t_stack **head_b, char stack);
 
 //reverse_rotate.c
-void	rra(t_stack** head);
-void	rrb(t_stack** head);
-void	rrr(t_stack** head_a, t_stack** head_b);
-void	rr_commands(t_stack** head_a, t_stack** head_b, char stack);
+void	rra(t_stack **head);
+void	rrb(t_stack **head);
+void	rrr(t_stack **head_a, t_stack **head_b);
+void	rr_commands(t_stack **head_a, t_stack **head_b, char stack);
 
 //rotate.c
-void	ra(t_stack** head);
-void	rb(t_stack** head);
-void	rr(t_stack** head_a,t_stack** head_b);
-void	r_commands(t_stack** head_a, t_stack** head_b, char stack);
+void	ra(t_stack **head);
+void	rb(t_stack **head);
+void	rr(t_stack **head_a, t_stack **head_b);
+void	r_commands(t_stack **head_a, t_stack **head_b, char stack);
 
 // swap.c
-void	sa(t_stack** head);
-void	sb(t_stack** head);
-void	ss(t_stack** head_a, t_stack **head_b);
-void	s_commands(t_stack** head_a, t_stack** head_b, char stack);
+void	sa(t_stack **head);
+void	sb(t_stack **head);
+void	ss(t_stack **head_a, t_stack **head_b);
+void	s_commands(t_stack **head_a, t_stack **head_b, char stack);
 
 // utils.c
-void	commands(t_stack** head_a, t_stack** head_b, char command, char stack);
-int		get_length(t_stack** head);
-
+void	commands(t_stack **head_a, t_stack **head_b, char command, char stack);
+int		get_length(t_stack **head);
 
 /********************************/
 /*		./algorithms/			*/
 /********************************/
 void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench);
-void	simple_algorithm(t_stack** head_a, t_stack** head_b);
-void	medium_algorithm(t_stack** head_a, t_stack** head_b);
-void	complex_algorithm(t_stack** head_a, t_stack** head_b);
+void	simple_algorithm(t_stack **head_a, t_stack **head_b);
+void	medium_algorithm(t_stack **head_a, t_stack **head_b);
+void	complex_algorithm(t_stack **head_a, t_stack **head_b);
 void	adaptive_algorithm(t_bench *bench, t_stack **a, t_stack **b);
 
 //helper functions
-int get_length(t_stack** head);
-void faster_way(t_stack** head, int number, char chosen_stack);
-int lowest_with_floor(t_stack** head, int floor, int floor_check);
-int highest_with_cieling(t_stack** head, int ceiling, int ceiling_check);
+int		get_length(t_stack **head);
+void	faster_way(t_stack **head, int number, char chosen_stack);
+int		lowest_with_floor(t_stack **head, int floor, int floor_check);
+int		highest_with_cieling(t_stack **head, int ceiling, int ceiling_check);
 
 #endif

@@ -12,9 +12,9 @@
 
 #include "../push_swap.h"
 
-// Low disorder: if disorder < 0.2, your chosen method must run in O(n2) time.
-// Medium disorder: if 0.2 ≤ disorder < 0.5, your chosen method must run in O(n√n) time.
-// High disorder: if disorder ≥ 0.5, your chosen method must run in O(n log n) time
+// Low disorder: if disorder < 0.2, O(n2) time.
+// Medium disorder: if 0.2 ≤ disorder < 0.5, O(n√n) time.
+// High disorder: if disorder ≥ 0.5, O(n log n) time
 
 static void	record_strat(float disorder, int *strategy)
 {
@@ -28,7 +28,7 @@ static void	record_strat(float disorder, int *strategy)
 
 void	adaptive_algorithm(t_bench *bench, t_stack **a, t_stack **b)
 {
-	float disorder;
+	float	disorder;
 
 	disorder = bench->disorder;
 	if (!a || !*a || disorder == 0.0f)

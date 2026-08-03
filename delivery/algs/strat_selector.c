@@ -24,6 +24,4 @@ void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench)
 		complex_algorithm(a, b);
 	else if (bench->strategy == 4)
 		adaptive_algorithm(bench, a, b);
-	//printf("%d\n", bench->strategy);
-	return ; 
 }
