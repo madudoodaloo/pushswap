@@ -1,6 +1,7 @@
 #!/bin/bash
 
-OUTPUT_FILE="O_complex_disorder.csv"
+OUTPUT_FILE="O_complex.csv"
+ALGO_FLAG="--complex"
 
 # Write Header for CSV
 echo "N,d_0.0,d_0.1,d_0.2,d_0.3,d_0.4,d_0.5,d_0.6,d_0.7,d_0.8,d_0.9,d_1.0" > "$OUTPUT_FILE"
@@ -61,7 +62,7 @@ test_n() {
         generate_disorder_args "$n" "$d" > args.txt
         
         # Count operations cleanly
-        moves=$(.././push_swap --complex $(cat args.txt) | wc -l | tr -d ' ')
+        moves=$(.././push_swap $ALGO_FLAG $(cat args.txt) | wc -l | tr -d ' ')
         row_data="$row_data,$moves"
     done
 
@@ -70,7 +71,7 @@ test_n() {
 }
 
 echo "=========================================================="
-echo "  Benchmarking --complex Across Disorder Spectrum (0.0-1.0)"
+echo "  Benchmarking $ALGO_FLAG Across Disorder Spectrum (0.0-1.0)"
 echo "=========================================================="
 
 # Sizes sequence
