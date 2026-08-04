@@ -1,7 +1,7 @@
 #!/bin/bash
 
-OUTPUT_FILE="O_complex.csv"
-ALGO_FLAG="--complex"
+OUTPUT_FILE="O_simple.csv"
+ALGO_FLAG="--simple"
 
 # Write Header for CSV
 echo "N,d_0.0,d_0.1,d_0.2,d_0.3,d_0.4,d_0.5,d_0.6,d_0.7,d_0.8,d_0.9,d_1.0" > "$OUTPUT_FILE"
