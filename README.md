@@ -55,3 +55,21 @@ https://medium.com/@andremrufino/asymptotic-analysis-and-big-o-notation-db4dba3f
 https://stackoverflow.com/questions/25993671/outputting-%E2%88%9A-symbol-in-c
 
 https://github.com/o-reo/push_swap_visualizer
+
+
+
+- readme com thresholds, internal techniques per regime, complexity arg (upper bounds) for time and space within the push swap model.
+
+
+complexity class refers to the rate of disorder of a given input, and on this project it will be used to select the most adequate sorting strategy, 
+taking that into consideration
+
+https://www.geeksforgeeks.org/dsa/insertion-sort-algorithm/
+https://www.geeksforgeeks.org/dsa/selection-sort-algorithm-2/
+https://www.w3schools.com/dsa/dsa_algo_bubblesort.php
+https://www.geeksforgeeks.org/dsa/bubble-sort-algorithm/
+
+https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memory-the-chunked-merge-sort-approach-318275275c81 chunk merge sort
+
+https://www.geeksforgeeks.org/dsa/introduction-to-block-sort/
+
