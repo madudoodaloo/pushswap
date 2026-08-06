@@ -12,19 +12,19 @@
 
 #include "../push_swap.h"
 
-int	n_per_chunk_calc(t_stack **head, int chunk)
+int n_per_chunk_calc(t_stack **head, int chunk)
 {
-	int	range;
-	int	length;
+    int range;
+    int length;
 
-	range = (highest_with_cieling(head, 0, 0) + 1);
-	range -= lowest_with_floor(head, 0, 0);
-	length = get_length(head);
-	if (get_length(head) > 400)
-		return ((get_length(head) * 2) / chunk);
-	else
-		return (get_length(head) / chunk);
+    range = (highest_with_cieling(head, 0, 0) + 1) - lowest_with_floor(head, 0, 0);
+    length = get_length(head);
+    if (get_length(head) > 400)
+        return (get_length(head) * 2 / chunk);
+    else
+	    return (get_length(head) / chunk);
 }
+
 
 int	is_sorted(t_stack **stack_a)
 {

@@ -36,9 +36,9 @@ static int	ft_strhascontent(char *str)
 }
 
 // handles calls of strjoin, protecting it from memory leaks in case of error.
-static char *join_and_free(char *str1, char *str2)
+static char	*join_and_free(char *str1, char *str2)
 {
-	char *temp;
+	char	*temp;
 
 	temp = NULL;
 	if (str1 && str2)

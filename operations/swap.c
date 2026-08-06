@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masilva-@student.42lisboa.com <masilva-    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/06 20:29:48 by masilva-@st       #+#    #+#             */
+/*   Updated: 2026/08/06 20:29:48 by masilva-@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
-void	sa(t_stack** head)
+void	sa(t_stack **head)
 {
 	int	temp;
 
-	if(head && *head && (*head)->next)
+	if (head && *head && (*head)->next)
 	{
 		temp = (*head)->next->n;
 		(*head)->next->n = (*head)->n;
@@ -12,12 +24,12 @@ void	sa(t_stack** head)
 	}
 }
 
-void	sb(t_stack** head)
+void	sb(t_stack **head)
 {
 	sa(head);
 }
 
-void	ss(t_stack** head_a, t_stack **head_b)
+void	ss(t_stack **head_a, t_stack **head_b)
 {
 	sa(head_a);
 	sb(head_b);
@@ -29,19 +41,19 @@ void	ss(t_stack** head_a, t_stack **head_b)
 //dá o valor do primeiro numero ao segundo 10
 //dá o valor da variável temporária ao primeiro 11
 
-void	s_commands(t_stack** head_a, t_stack** head_b, char stack)
+void	s_commands(t_stack **head_a, t_stack **head_b, char stack)
 {
-	if(stack == 'a')
+	if (stack == 'a')
 	{
 		register_move(get_bench(NULL), "sa\n");
 		sa(head_a);
 	}
-	if(stack == 'b')
+	if (stack == 'b')
 	{
 		register_move(get_bench(NULL), "sb\n");
 		sb(head_b);
 	}
-	if(stack == 's')
+	if (stack == 's')
 	{
 		register_move(get_bench(NULL), "ss\n");
 		ss(head_a, head_b);

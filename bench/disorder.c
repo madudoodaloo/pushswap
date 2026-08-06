@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../push_swap.h" 
 
 float	compute_disorder(t_stack **a)
 {
 	int		mistakes;
 	int		total_pairs;
 	t_stack	*curr;
-	t_stack *temp;
+	t_stack	*temp;
 
 	mistakes = 0;
 	total_pairs = 0;
@@ -34,8 +34,6 @@ float	compute_disorder(t_stack **a)
 		}
 		curr = curr->next;
 	}
-	//float dis = ((float)mistakes / (float)total_pairs) * 100.0f;
-	//printf("total pairs: %d | mistakes: %d | disorder: %f\n", total_pairs, mistakes, dis);
 	if (!total_pairs)
 		return (0.0f);
 	return (((float)mistakes / (float)total_pairs) * 100.0f);

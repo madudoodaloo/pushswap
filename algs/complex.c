@@ -1,14 +1,26 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   complex.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masilva-@student.42lisboa.com <masilva-    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/08/06 19:58:16 by masilva-@st       #+#    #+#             */
+/*   Updated: 2026/08/06 19:58:16 by masilva-@st      ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 //conta o numero de bits (codigo binario) de um numero (excluiu sinal negativo)
-int number_of_bits(int number)
+int	number_of_bits(int number)
 {
-	int bits;
-	int num;
+	int	bits;
+	int	num;
 
 	num = number;
 	bits = 0;
-	while(num != 0)
+	while (num != 0)
 	{
 		num = num / 2;
 		bits++;
@@ -17,16 +29,14 @@ int number_of_bits(int number)
 }
 
 //procura pelo numero maximo de bits que o algoritmo tera de comparar
-int find_bits(t_stack** head)
+int	find_bits(t_stack **head)
 {
 	int		bits;
-//	int		neg;
-	t_stack*	node;
+	t_stack	*node;
 
 	node = *head;
 	bits = number_of_bits(node->n);
-//	neg = 0;
-	while(node)
+	while (node)
 	{
 		if (bits < number_of_bits(node->n))
 			bits = number_of_bits(node->n);
@@ -35,56 +45,59 @@ int find_bits(t_stack** head)
 	return (bits);
 }
 
-//o numero sofre uma ajuste para a direita em codigo binario (LRS) e depois e comparado com 1 numa operacao AND o que o que quer dizer que so podera retornar 1 ou 0
+// o numero sofre uma ajuste para a direita em codigo 
+// binario (LRS) e depois e comparado com 1 numa operacao AND 
+// o que o que quer dizer que so podera retornar 1 ou 0
 int	check_bit(int number, int bit)
 {
 	return ((number >> bit) & 1);
 }
 
-//esta funao procura os numeros negativos no stack e coloca-os abaio dos numeros positivos
-void revert(t_stack **head_a, t_stack **head_b)
+//esta funao procura os numeros negativos no stack e 
+// coloca-os abaixo dos numeros positivos
+void	revert(t_stack **head_a, t_stack **head_b)
 {
-	int length;
-	int i;
-	int check;
-	t_stack* node;
+	int		length;
+	int		i;
+	int		check;
+	t_stack	*node;
 
 	length = get_length(head_a);
 	i = 0;
 	check = 0;
 	node = *head_a;
-	while(node)
+	while (node)
 	{
-		if(node->n < 0)
+		if (node->n < 0)
 			check++;
 		node = node->next;
 	}
-	while((i < length) && (check != 0))
+	while ((i < length) && (check != 0))
 	{
-		if((*head_a)->n < 0)
+		if ((*head_a)->n < 0)
 			commands(head_a, head_b, 'p', 'b');
 		else
 			commands(head_a, head_b, 'r', 'a');
 		i++;
 	}
-	while(*head_b)
+	while (*head_b)
 		commands(head_a, head_b, 'p', 'a');
 }
 
-void complex_algorithm(t_stack** head_a, t_stack** head_b)
+void	complex_algorithm(t_stack **head_a, t_stack **head_b)
 {
-	int bits;
-	int bit;
-	int length;
-	int i;
+	int	bits;
+	int	bit;
+	int	length;
+	int	i;
 
 	bits = find_bits(head_a);
 	bit = 0;
 	length = get_length(head_a);
-	while(bit < bits)
+	while (bit < bits)
 	{
 		i = 0;
-		while(i < length)
+		while (i < length)
 		{
 			if (check_bit((*head_a)->n, bit) == 0)
 				commands(head_a, head_b, 'p', 'b');
@@ -92,7 +105,7 @@ void complex_algorithm(t_stack** head_a, t_stack** head_b)
 				commands(head_a, head_b, 'r', 'a');
 			i++;
 		}
-		while(*head_b)
+		while (*head_b)
 			commands(head_a, head_b, 'p', 'a');
 		bit++;
 	}

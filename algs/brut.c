@@ -104,7 +104,7 @@ void	alg5(t_stack **a, t_stack **b)
 
 int	brut_algorithm(t_stack **a, t_stack **b)
 {
-	int size;
+	int	size;
 
 	size = get_length(a);
 	if (size <= 3)
