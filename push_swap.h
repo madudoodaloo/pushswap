@@ -170,9 +170,13 @@ int		getbiggestindex(t_stack **stack);
 void	getto_a_top(t_stack **a, int index);
 void	getto_b_top(t_stack **b, int index);
 
-void	brut_algorithm(t_stack **a, t_stack **b)
+
+int	putina2(t_stack **a, t_stack **b, int *big, int index);
+int		brut_algorithm(t_stack **a, t_stack **b);
 void	alg5(t_stack **a, t_stack **b);
 void	alg3(t_stack **a);
 
+
+void bubble_algorithm(t_stack **head);
 
 #endif

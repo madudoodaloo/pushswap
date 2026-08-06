@@ -1,103 +1,99 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   medium.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: masilva- <masilva-@student.42lisboa.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/08/05 05:30:07 by masilva-          #+#    #+#             */
-/*   Updated: 2026/08/05 05:30:07 by masilva-         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../push_swap.h"
 
-static void	putinb(t_stack **a, t_stack **b, int size)
-{
-	int	chunk;
-	int	counterb;
+//raiz quadrada adaptado a inteiros
 
-	chunk = 30;
-	counterb = 0;
-	while (*a)
+
+int highest_without_chunk(t_stack **head)
+{
+	int		highest;
+	t_stack	*node;
+	
+	highest = lowest_with_floor(head, 0, 0);
+	node = *head;
+	while(node)
 	{
-		if ((*a)->index < chunk)
-		{
-			p_commands(a, b, 'b');
-			counterb++;
-		}
-		else if (counterb == chunk)
-		{
-			if (size > 100)
-			{
-				chunk += 30;
-			}
-			else
-				chunk += 15;
-		}
+		if(node->n > highest && node->block == 0)
+			highest = node->n;
+		node = node->next;
+	}
+	return (highest);
+}
+
+void mark_chunk(t_stack **head, int chunk, int n)
+{
+	int		highest;
+	t_stack	*node;
+
+	highest = 0;
+	while (n != 0)
+	{
+		highest = highest_without_chunk(head);
+		node = *head;
+		while(node->n != highest)
+			node = node->next;
+		node->block = chunk;
+		n--;
+	}
+}
+
+void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
+{
+	t_stack	*node;
+	int		check;
+	int		i;
+
+	i = 1;
+	while (i <= chunk && *head_a)
+	{
+		if ((*head_a)->block == i)
+			commands(head_a, head_b, 'p', 'b');
 		else
-			getto_a_top(a, indexchecker(a, (*a)->index));
+			commands(head_a, head_b, 'r', 'a');
+		node = *head_a;
+		check = 0;
+		while(node && check == 0)
+		{
+			if(node->block == i)
+				check++;
+			node = node->next;
+		}
+		if (check == 0)
+			i++;
 	}
 }
 
-static int	putina(t_stack **a, t_stack **b, int *big, int index)
+void	sort_chunk(t_stack **head_a, t_stack **head_b)
 {
-	if ((*a) && (*a)->next && (*a)->n > (*a)->next->n)
+	int		highest;
+
+	while (*head_b)
 	{
-		s_commands(a, NULL, 'a');
-		(*big)--;
-		index = indexchecker(b, *big);
+		highest = highest_with_cieling(head_b, 0, 0);
+		while((*head_b)->n != highest)
+			faster_way(head_b, highest, 'b');
+		commands(head_a, head_b, 'p', 'a');
 	}
-	else if ((indexchecker(b, ((*big) - 1)) == 0))
-	{
-		p_commands(a, b, 'a');
-		index = indexchecker(b, (*big));
-	}
-	else if (index == 2 && (indexchecker(b, ((*big) - 1)) == 0))
-	{
-		p_commands(a, b, 'a');
-		(*big)--;
-		r_commands(a, b, 'b');
-		p_commands(a, b, 'a');
-		(*big)--;
-		s_commands(a, b, 'a');
-		index = indexchecker(b, (*big));
-	}
-	index = putina2(a, b, big, index);
-	return (index);
 }
 
-int	putina2(t_stack **a, t_stack **b, int *big, int index)
+void medium_algorithm(t_stack **head_a, t_stack **head_b)
 {
-	if (index == 1 && (indexchecker(b, (*big) - 1)) == 0)
-	{
-		s_commands(a, b, 'b');
-		index = indexchecker(b, (*big));
-	}
-	else if (indexchecker(b, (*big)) == 0)
-	{
-		p_commands(a, b, 'a');
-		(*big)--;
-		index = indexchecker(b, (*big));
-	}
-	else
-	{
-		getto_b_top(b, index);
-		index = indexchecker(b, (*big));
-	}
-	return (index);
-}
+	int range;
+	int chunk;
+	int n_per_chunk;
 
-void	medium_algorithm(t_stack **a, t_stack **b)
-{
-	int	index;
-	int	big;
-
-	putinb(a, b, (get_bench(NULL))->elements);
-	big = getbiggestindex(b);
-	index = indexchecker(b, big);
-	while ((*b) && index == indexchecker(b, big))
-		index = putina(a, b, &big, index);
-	if ((*b) == NULL && (*a)->n > (*a)->next->n)
-		s_commands(a, b, 'a');
+	range = (highest_with_cieling(head_a, 0, 0) - lowest_with_floor(head_a, 0, 0)) + 1;
+	chunk = pitagoras(get_length(head_a));
+	n_per_chunk = range / chunk;
+	while(chunk > 0)
+	{
+		mark_chunk(head_a, chunk, n_per_chunk);
+		chunk--;
+	}
+	chunk = pitagoras(get_length(head_a));
+	push_chunks(head_a, head_b, chunk);
+	while(*head_b)
+	{
+		sort_chunk(head_a, head_b);
+		chunk--;
+	}
 }

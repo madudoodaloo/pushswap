@@ -38,7 +38,7 @@ void	adaptive_algorithm(t_bench *bench, t_stack **a, t_stack **b)
 	if (brut_algorithm(a, b))
 		return ;
 	else if (disorder < 0.2f)
-		simple_algorithm(a, b);
+		bubble_algorithm(a);
 	else if (disorder < 0.5f)
 		medium_algorithm(a, b);
 	else

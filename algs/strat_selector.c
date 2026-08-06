@@ -27,6 +27,6 @@ void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench)
 	else if (bench->strategy == 4)
 		adaptive_algorithm(bench, a, b);
 	if (compute_disorder(a) || get_length(b) > 0)
-		printf("error: stack is not sorted\n");
+		ft_fprintf(2, "error: stack is not sorted\n");
 	return ;
 }

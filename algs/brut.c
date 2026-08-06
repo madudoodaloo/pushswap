@@ -102,15 +102,15 @@ void	alg5(t_stack **a, t_stack **b)
 		p_commands(a, b, 'a');
 }
 
-void	brut_algorithm(t_stack **a, t_stack **b)
+int	brut_algorithm(t_stack **a, t_stack **b)
 {
 	int size;
 
-	size = get_length(head_a);
+	size = get_length(a);
 	if (size <= 3)
-		alg3(head_a);
+		alg3(a);
 	else if (size <= 5)
-		alg5(head_a, head_b);
+		alg5(a, b);
 	else
 		return (0);
 	return (1);

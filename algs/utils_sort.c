@@ -12,8 +12,6 @@
 
 #include "../push_swap.h"
 
-
-
 int	indexchecker(t_stack **stack, int i)
 {
 	t_stack	*cursor;
@@ -38,6 +36,9 @@ int	indexchecker(t_stack **stack, int i)
 	return (position);
 }
 
+// iterates through the stack, returns the biggest found index
+// ex: 1 [23] 5 4 7
+// returns: [1]
 int	getbiggestindex(t_stack **stack)
 {
 	t_stack	*cursor;
