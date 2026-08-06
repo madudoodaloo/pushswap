@@ -3,7 +3,7 @@ BONUS_NAME	= checker
 
 CC			= cc
 CFLAGS		= -Wall -Werror -Wextra -g #-fsanitize=address 
-INCLUDE 	= push_swap.h checker/checker.h
+INCLUDE 	= push_swap.h
 
 
 # valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --verbose
@@ -25,8 +25,8 @@ SRCF = $(wildcard *.c) \
 
 OBJF = ${SRCF:.c=.o}
 
-B_SRCF = $(wildcard checker/*.c)
-B_OBJF = ${B_SRCF:.c=.o}
+#B_SRCF = $(wildcard checker/*.c)
+#B_OBJF = ${B_SRCF:.c=.o}
 
 
 all: $(NAME)

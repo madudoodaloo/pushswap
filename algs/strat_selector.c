@@ -26,7 +26,9 @@ void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench)
 		complex_algorithm(a, b);
 	else if (bench->strategy == 4)
 		adaptive_algorithm(bench, a, b);
-	if (compute_disorder(a) || get_length(b) > 0)
+	if (compute_disorder(a))
 		ft_fprintf(2, "error: stack is not sorted\n");
+	if (get_length(b) > 0)
+		ft_fprintf(2, "error: b has elements\n");
 	return ;
 }

@@ -1,7 +1,17 @@
 #include "../push_swap.h"
 
-//raiz quadrada adaptado a inteiros
+int n_per_chunk_calc(t_stack **head, int chunk)
+{
+    int range;
+    int length;
 
+    range = (highest_with_cieling(head, 0, 0) + 1) - lowest_with_floor(head, 0, 0);
+    length = get_length(head);
+    if (get_length(head) > 400)
+        return (get_length(head) * 2 / chunk);
+    else
+	    return (get_length(head) / chunk);
+}
 
 int highest_without_chunk(t_stack **head)
 {
@@ -12,7 +22,7 @@ int highest_without_chunk(t_stack **head)
 	node = *head;
 	while(node)
 	{
-		if(node->n > highest && node->block == 0)
+		if(node->n > highest && node->block == -1)
 			highest = node->n;
 		node = node->next;
 	}
@@ -36,13 +46,13 @@ void mark_chunk(t_stack **head, int chunk, int n)
 	}
 }
 
-void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
+/*void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
 {
 	t_stack	*node;
 	int		check;
 	int		i;
 
-	i = 1;
+	i = 0;
 	while (i <= chunk && *head_a)
 	{
 		if ((*head_a)->block == i)
@@ -59,6 +69,30 @@ void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
 		}
 		if (check == 0)
 			i++;
+	}
+}*/
+
+void	push_chunks(t_stack **head_a, t_stack **head_b, int chunk)
+{
+	t_stack	*node;
+	int		i;
+
+	i = 0;
+	while (i <= chunk && *head_a)
+	{
+        node = *head_a;
+		while(node && node->block != i)
+		{
+			node = node->next;
+            if(!node)
+            {
+                node = *head_a;
+                i++;
+            }
+		}
+        while((*head_a)->n != node->n)
+            faster_way(head_a, node->n, 'a');
+        commands(head_a, head_b, 'p', 'b');
 	}
 }
 
@@ -77,17 +111,16 @@ void	sort_chunk(t_stack **head_a, t_stack **head_b)
 
 void medium_algorithm(t_stack **head_a, t_stack **head_b)
 {
-	int range;
 	int chunk;
 	int n_per_chunk;
 
-	range = (highest_with_cieling(head_a, 0, 0) - lowest_with_floor(head_a, 0, 0)) + 1;
 	chunk = pitagoras(get_length(head_a));
-	n_per_chunk = range / chunk;
-	while(chunk > 0)
+    n_per_chunk = n_per_chunk_calc(head_a, chunk);
+	while(chunk >= 0)
 	{
 		mark_chunk(head_a, chunk, n_per_chunk);
 		chunk--;
+        printf("%d\n", chunk);
 	}
 	chunk = pitagoras(get_length(head_a));
 	push_chunks(head_a, head_b, chunk);
