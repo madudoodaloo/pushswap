@@ -19,12 +19,14 @@ void	strategy_selector(t_stack **a, t_stack **b, t_bench *bench)
 	if (!bench->strategy)
 		bench->strategy = 4;
 	if (bench->strategy == 1)
-		simple_algorithm(bench, a, b);
-	else if (bench->strategy == 2)
+		simple_algorithm(a, b);
+ 	else if (bench->strategy == 2)
 		medium_algorithm(a, b);
 	else if (bench->strategy == 3)
 		complex_algorithm(a, b);
 	else if (bench->strategy == 4)
 		adaptive_algorithm(bench, a, b);
-	return ; 
+	if (compute_disorder(a) || get_length(b) > 0)
+		printf("error: stack is not sorted\n");
+	return ;
 }

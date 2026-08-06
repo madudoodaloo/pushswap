@@ -12,66 +12,78 @@
 
 #include "../push_swap.h"
 
-int	check_neighbours(t_stack *s, int range)
-{
-	if (ft_lstsize(s) < range)
-		range = ft_lstsize(s);
-	
-}
 
-void	set_index(t_stack **s)
+
+int	indexchecker(t_stack **stack, int i)
 {
-	t_stack	*temp;
 	t_stack	*cursor;
+	int		position;
+	int		flag;
 
-	cursor = *s;
+	position = 0;
+	flag = -1;
+	cursor = *stack;
 	while (cursor)
 	{
-		cursor->index = 0;
-		temp = *s;
-		while (temp)
+		if (cursor->index == i)
 		{
-			if (cursor != temp && cursor->content > temp->content)
-				cursor->index++;
-			temp = temp->next;
+			flag = 0;
+			break ;
 		}
+		position++;
 		cursor = cursor->next;
 	}
+	if (flag == -1)
+		return (-1);
+	return (position);
 }
 
-// returns 1 if element is closer to the top,
-// returns -1 if element is closer to the bottom,
-
-int	get_cost(t_stack **s, int target_index, int size)
-{
-	int		i;
-	t_stack	*cursor;
-
-	i = 0;
-	cursor = *s;
-	while (cursor->index != target_index)
-	{
-		i++;
-		cursor = cursor->next;
-	}
-	size = size - i;
-	if (i < size)
-		return (1);
-	return (-1);
-}
-
-int	get_biggestindex(t_stack **stack)
+int	getbiggestindex(t_stack **stack)
 {
 	t_stack	*cursor;
-	int		big_ind;
+	int		big;
 
 	cursor = *stack;
-	big_ind = cursor->index;
+	big = cursor->index;
 	while (cursor)
 	{
-		if (cursor->index > big_ind)
-			big_ind = cursor->index;
+		if (cursor->index > big)
+			big = cursor->index;
 		cursor = cursor->next;
 	}
-	return (big_ind);
+	return (big);
+}
+
+void	getto_a_top(t_stack **a, int index)
+{
+	if (index == -1)
+		return ;
+	if (index < (get_length(a) / 2))
+		r_commands(a, NULL, 'a');
+	else
+		rr_commands(a, NULL, 'a');
+}
+
+void	getto_b_top(t_stack **b, int index)
+{
+	if (index == -1)
+		return ;
+	if (index < (get_length(b) / 2))
+		r_commands(NULL, b, 'b');
+	else
+		rr_commands(NULL, b, 'b');
+}
+
+int	is_sorted(t_stack **stack_a)
+{
+	t_stack	*cursor;
+
+	cursor = *stack_a;
+	while (cursor->next)
+	{
+		if (cursor->n > cursor->next->n)
+			return (0);
+		cursor = cursor->next;
+	}
+	return (1);
 }

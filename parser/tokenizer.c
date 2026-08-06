@@ -34,6 +34,27 @@ int	ft_getoptions(char *option, char info)
 	return (0);
 }
 
+// sets index 0 - [n-1] across stack elements, called solely at tokenizer()
+void	set_index(t_stack **s)
+{
+	t_stack	*temp;
+	t_stack	*cursor;
+
+	cursor = *s;
+	while (cursor)
+	{
+		cursor->index = 0;
+		temp = *s;
+		while (temp)
+		{
+			if (cursor != temp && cursor->n > temp->n)
+				cursor->index++;
+			temp = temp->next;
+		}
+		cursor = cursor->next;
+	}
+}
+
 static int	ft_matrixlen(char **matrix)
 {
 	int	i;
@@ -63,4 +84,5 @@ void	tokenizer(char **cmdl, t_stack **a, t_bench *bench)
 	max -= options / 10 + (options % 10 > 0);
 	bench->elements = max;
 	bench->disorder = compute_disorder(a);
+	set_index(a);
 }

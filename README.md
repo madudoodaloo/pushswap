@@ -73,3 +73,57 @@ https://satyadeepmaheshwari.medium.com/sorting-large-datasets-with-limited-memor
 
 https://www.geeksforgeeks.org/dsa/introduction-to-block-sort/
 
+
+
+**Push_swap** is an algorithmic project designed to deepen our understanding of data structures, complexity analysis, and adaptive algorithm design. The core objective is to sort a stack of integers using a secondary stack and a restricted set of stack manipulation commands (`sa`, `sb`, `ss`, `pa`, `pb`, `ra`, `rb`, `rr`, `rra`, `rrb`, `rrr`), producing the shortest possible sequence of operations.
+
+
+---
+
+## Technical Overview & Adaptive Strategy
+
+Rather than relying on input size (N) alone, this project selects algorithms based on input disorder (D). 
+
+### Disorder Metric
+Disorder measures how far the initial stack A is from being sorted, expressed as a normalized ratio of actual inversions over total potential pairs:
+
+**Disorder (D) = Mistakes (Inversions) / Total Unique Pairs**
+*(Where Total Unique Pairs = N * (N - 1) / 2)*
+
+* **D = 0.0:** Fully sorted stack (0 operations required).
+* **D < 0.2:** Low disorder (nearly sorted).
+* **0.2 <= D < 0.5:** Medium disorder (moderate entropy/patterns).
+* **D >= 0.5:** High disorder (chaotic or reverse-sorted input).
+
+---
+
+## Thresholds, Internal Techniques & Complexity Analysis
+
+The adaptive router selects internal strategies based on D, balancing setup overhead against theoretical upper bounds within the Push_swap operation model:
+
+| Regime | Disorder Threshold | Internal Technique | Operations Time Upper Bound | Space Complexity |
+| :--- | :--- | :--- | :--- | :--- |
+| **Low Disorder** | D < 0.2 | Adaptive Outlier Extraction / Insertion Pass | O(n^2) worst-case, O(n) empirical | O(n) auxiliary |
+| **Medium Disorder** | 0.2 <= D < 0.5 | Chunk-Based / Block Partitioning (√n buckets) | O(n√n) | O(n) auxiliary |
+| **High Disorder** | D >= 0.5 | Radix Sort (LSD Bit-Passes) / Stack Partitioning | O(n log n) | O(n) auxiliary |
+
+### Rationale & Complexity Arguments
+
+#### 1. Low Disorder Regime (D < 0.2) — O(n^2) Class
+* **Internal Technique:** Iterative outlier extraction. The algorithm scans Stack A for neighbor-index inversion gaps. Isolated out-of-order elements are temporarily pushed to Stack B, Stack A is base-sorted (or handled via `alg3`), and elements from B are re-inserted using targeted swaps (`sa`).
+* **Time Complexity Upper Bound:** While general Insertion/Selection methods degrade to O(n^2) on random inputs, their operation cost on low disorder scales with inversions: O(n + K). When D < 0.2, K is extremely small, yielding an empirical near-linear runtime of O(n) moves.
+* **Space Complexity:** O(n) total auxiliary stack space.
+
+#### 2. Medium Disorder Regime (0.2 <= D < 0.5) — O(n√n) Class
+* **Internal Technique:** Block/Chunk Partitioning. Stack A is divided into k = √n value ranges. Elements belonging to the active chunk are pushed into Stack B using rotational searches (`ra`/`rra`), forming a roughly sorted distribution in B. Elements are then systematically pushed back to A in strict descending order.
+* **Time Complexity Upper Bound:** Searching and rotating each element into its corresponding chunk requires at most O(n) rotations. Across √n chunk passes, the operation count scales to O(n√n).
+* **Space Complexity:** O(n) auxiliary space.
+
+#### 3. High Disorder Regime (D >= 0.5) — O(n log n) Class
+* **Internal Technique:** Least Significant Bit (LSD) Radix Sort or Stack Quick-Partitioning. Data is normalized into 0-based indices. The algorithm performs bitwise evaluations on Stack A, pushing 0-bits to B and rotating 1-bits in A, then restoring B back to A.
+* **Time Complexity Upper Bound:** The process requires log2(max_index) bit passes. Each pass processes all n elements in O(n) operations, yielding a strict theoretical bound of O(n log n) total generated operations.
+* **Space Complexity:** O(n) auxiliary space.
+
+---
+
+

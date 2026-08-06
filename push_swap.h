@@ -32,7 +32,7 @@ typedef struct s_stack
 {
 	int				n;
 	int				block;
-	int				index
+	int				index;
 	struct s_stack	*next;
 }	t_stack;
 
@@ -162,5 +162,17 @@ int get_length(t_stack** head);
 void faster_way(t_stack** head, int number, char chosen_stack);
 int lowest_with_floor(t_stack** head, int floor, int floor_check);
 int highest_with_cieling(t_stack** head, int ceiling, int ceiling_check);
+
+void	set_index(t_stack **s);
+int		is_sorted(t_stack **stack_a);
+int		indexchecker(t_stack **stack, int i);
+int		getbiggestindex(t_stack **stack);
+void	getto_a_top(t_stack **a, int index);
+void	getto_b_top(t_stack **b, int index);
+
+void	brut_algorithm(t_stack **a, t_stack **b)
+void	alg5(t_stack **a, t_stack **b);
+void	alg3(t_stack **a);
+
 
 #endif

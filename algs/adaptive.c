@@ -35,7 +35,9 @@ void	adaptive_algorithm(t_bench *bench, t_stack **a, t_stack **b)
 		return ;
 	disorder /= 100.0f;
 	record_strat(disorder, &(bench->strategy));
-	if (disorder < 0.2f)
+	if (brut_algorithm(a, b))
+		return ;
+	else if (disorder < 0.2f)
 		simple_algorithm(a, b);
 	else if (disorder < 0.5f)
 		medium_algorithm(a, b);
